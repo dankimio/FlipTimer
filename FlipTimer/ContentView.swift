@@ -22,7 +22,7 @@ struct ContentView: View {
             )
         }
         .sheet(isPresented: $isPresented, content: {
-            Text("Settings")
+            SettingsView()
         })
         .accentColor(.black)
     }
