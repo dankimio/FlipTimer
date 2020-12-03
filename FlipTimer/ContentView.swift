@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isPresented = false
+    @State private var showSettingsView = false
 
     var body: some View {
         NavigationView {
@@ -16,13 +16,13 @@ struct ContentView: View {
             }
             .navigationBarItems(
                 trailing: Button(
-                    action: { isPresented.toggle() },
+                    action: { showSettingsView.toggle() },
                     label: { Image(systemName: "gearshape.fill") }
                 )
             )
         }
-        .sheet(isPresented: $isPresented, content: {
-            SettingsView()
+        .sheet(isPresented: $showSettingsView, content: {
+            SettingsView(showSettingsView: $showSettingsView)
         })
         .accentColor(.black)
     }

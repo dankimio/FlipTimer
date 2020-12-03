@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Binding var showSettingsView: Bool
+
     var body: some View {
         NavigationView {
             VStack {
@@ -16,10 +18,8 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .navigationBarItems(
                 trailing: Button(
-                    action: {},
-                    label: {
-                        Text("Done")
-                    }
+                    action: { showSettingsView.toggle() },
+                    label: { Text("Done") }
                 )
             )
         }
@@ -28,6 +28,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(showSettingsView: .constant(true))
     }
 }
