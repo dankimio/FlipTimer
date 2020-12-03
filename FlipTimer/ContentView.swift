@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  FlipTimer
-//
-//  Created by Dan on 03/12/2020.
-//
-
 import SwiftUI
 
 struct ContentView: View {
