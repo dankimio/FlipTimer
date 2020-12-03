@@ -12,9 +12,12 @@ struct SettingsView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Hello")
+            List {
+                Section(header: Text("Mode")) {
+                    Text("Strict mode")
+                }
             }
+            .listStyle(InsetGroupedListStyle())
             .navigationTitle("Settings")
             .navigationBarItems(
                 trailing: Button(
