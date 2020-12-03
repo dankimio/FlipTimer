@@ -13,8 +13,15 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Mode")) {
+                Section(
+                    header: Text("Mode"),
+                    footer: Text("Timer will be reset if the phone is unflipped")
+                ) {
                     Toggle("Strict mode", isOn: .constant(true))
+                }
+                Section(header: Text("Help")) {
+                    NavigationLink("Open Tutorial", destination: Text(""))
+                    NavigationLink("Share Feedback", destination: Text(""))
                 }
             }
             .listStyle(InsetGroupedListStyle())
