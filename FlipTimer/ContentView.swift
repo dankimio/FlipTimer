@@ -4,7 +4,10 @@ struct ContentView: View {
   var body: some View {
     NavigationView {
       VStack {
-        Text("Hello!")
+        Text("25:00")
+          .font(
+            .system(size: 84, weight: .regular, design: .monospaced)
+          )
       }
     }
   }
