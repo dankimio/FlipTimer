@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isPresented = false
+
     var body: some View {
         NavigationView {
             VStack {
@@ -13,15 +15,17 @@ struct ContentView: View {
                 }
             }
             .navigationBarItems(
-                trailing: NavigationLink(
-                    destination: Text("Destination"),
-                    label: {
-                        Image(systemName: "gearshape.fill")
-                    }
+                trailing: Button(
+                    action: { isPresented.toggle() },
+                    label: { Image(systemName: "gearshape.fill") }
                 )
             )
-    }.accentColor(.black)
-}
+        }
+        .sheet(isPresented: $isPresented, content: {
+            Text("Settings")
+        })
+        .accentColor(.black)
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
