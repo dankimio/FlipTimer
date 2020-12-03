@@ -13,7 +13,7 @@ struct ContentView: View {
       }) {
         Image(systemName: "gearshape.fill")
       })
-    }
+    }.accentColor(.black)
   }
 }
 
