@@ -14,7 +14,7 @@ struct SettingsView: View {
         NavigationView {
             List {
                 Section(header: Text("Mode")) {
-                    Text("Strict mode")
+                    Toggle("Strict mode", isOn: .constant(true))
                 }
             }
             .listStyle(InsetGroupedListStyle())
