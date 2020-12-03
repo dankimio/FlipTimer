@@ -8,7 +8,11 @@ struct ContentView: View {
           .font(
             .system(size: 96, weight: .light, design: .monospaced)
           )
-      }
+      }.navigationBarItems(trailing: Button(action: {
+        print("Settings")
+      }) {
+        Image(systemName: "gearshape.fill")
+      })
     }
   }
 }
