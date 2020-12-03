@@ -24,7 +24,6 @@ struct ContentView: View {
         .sheet(isPresented: $showSettingsView, content: {
             SettingsView(showSettingsView: $showSettingsView)
         })
-        .accentColor(.black)
     }
 }
 
