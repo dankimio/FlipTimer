@@ -6,7 +6,7 @@ struct ContentView: View {
       VStack {
         Text("25:00")
           .font(
-            .system(size: 84, weight: .regular, design: .monospaced)
+            .system(size: 96, weight: .light, design: .monospaced)
           )
       }
     }
