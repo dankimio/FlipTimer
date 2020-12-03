@@ -4,10 +4,13 @@ struct ContentView: View {
   var body: some View {
     NavigationView {
       VStack {
-        Text("25:00")
-          .font(
-            .system(size: 96, weight: .light, design: .monospaced)
-          )
+        Text("24:59")
+          .font(.system(size: 96, weight: .light, design: .monospaced))
+          .padding(.bottom, 30)
+
+        VStack {
+          Text("Flip your phone to start the timer")
+        }
       }.navigationBarItems(trailing: Button(action: {
         print("Settings")
       }) {
