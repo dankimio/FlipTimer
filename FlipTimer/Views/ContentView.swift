@@ -3,9 +3,8 @@ import AVFoundation
 
 struct ContentView: View {
     @State private var showSettingsView = false
-    @State var timerMode: TimerMode = .paused
 
-    var timerManager = TimerManager()
+    @ObservedObject var timerManager = TimerManager()
     
     var body: some View {
         NavigationView {
@@ -15,12 +14,12 @@ struct ContentView: View {
                     .padding(.bottom, 30)
                 
                 VStack {
-                    if timerMode == .initial {
+                    if timerManager.timerMode == .initial {
                         Text("Flip your phone to start the timer")
                             .foregroundColor(Color(UIColor.systemGray))
                     }
 
-                    if timerMode == .paused {
+                    if timerManager.timerMode == .paused {
                         Button(action: {}, label: {
                             HStack {
                                 Spacer()
@@ -87,6 +86,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(timerMode: .paused)
+        ContentView()
     }
 }
