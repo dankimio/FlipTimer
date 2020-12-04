@@ -22,10 +22,14 @@ class TimerManager: ObservableObject {
     private func proximitySensorDidClose() {
         // BeginRecording
         AudioServicesPlayAlertSound(SystemSoundID(1117))
+
+        timerMode = .running
     }
 
     private func proximitySensorDidUnclose() {
         // EndRecording
         AudioServicesPlayAlertSound(SystemSoundID(1118))
+
+        timerMode = .paused
     }
 }
