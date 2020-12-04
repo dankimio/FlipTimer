@@ -1,24 +1,11 @@
 import SwiftUI
 import AVFoundation
 
-// Source: https://gist.github.com/skl/a093291abc0a90a640e50f78888456e7
-class ProximityObserver {
-    @objc func didChange(notification: NSNotification) {
-        print("ProximityObserver.didChange")
-
-        guard let device = notification.object as? UIDevice else { return }
-
-        // BeginRecording, EndRecording
-        let systemSound = device.proximityState ? SystemSoundID(1117) : SystemSoundID(1118)
-        AudioServicesPlayAlertSound(systemSound)
-    }
-}
-
 struct ContentView: View {
     @State private var showSettingsView = false
     @State var timerMode: TimerMode = .paused
 
-    var proximityObserver = ProximityObserver()
+    var timerManager = TimerManager()
     
     var body: some View {
         NavigationView {
@@ -79,8 +66,8 @@ struct ContentView: View {
         guard UIDevice.current.isProximityMonitoringEnabled else { return }
 
         NotificationCenter.default.addObserver(
-            proximityObserver,
-            selector: #selector(proximityObserver.didChange),
+            timerManager,
+            selector: #selector(timerManager.proximityDidChange),
             name: UIDevice.proximityStateDidChangeNotification,
             object: UIDevice.current
         )
@@ -88,10 +75,10 @@ struct ContentView: View {
 
     private func deactivateProximitySensor() {
         print("deactivateProximitySensor")
-
+        
         UIDevice.current.isProximityMonitoringEnabled = false
         NotificationCenter.default.removeObserver(
-            proximityObserver,
+            timerManager,
             name: UIDevice.proximityStateDidChangeNotification,
             object: UIDevice.current
         )
