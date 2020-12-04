@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showSettingsView = false
-    @State var timerMode: TimerMode
+    @State var timerMode: TimerMode = .paused
     
     var body: some View {
         NavigationView {
@@ -25,11 +25,11 @@ struct ContentView: View {
                                 Spacer()
                             }
                             .padding()
-                            .background(Color.black)
+                            .background(Color.accentColor)
                             .cornerRadius(12)
                         })
                     }
-                }
+                }.padding(.horizontal)
 
                 Spacer().frame(maxHeight: 200)
             }
