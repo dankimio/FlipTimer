@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 // Source: https://gist.github.com/skl/a093291abc0a90a640e50f78888456e7
 class ProximityObserver {
@@ -6,6 +7,14 @@ class ProximityObserver {
         print("ProximityObserver.didChange")
         if let device = notification.object as? UIDevice {
             print(device.proximityState)
+
+            if device.proximityState {
+                // BeginRecording
+                AudioServicesPlayAlertSound(SystemSoundID(1117))
+            } else {
+                // EndRecording
+                AudioServicesPlayAlertSound(SystemSoundID(1118))
+            }
         }
     }
 }
