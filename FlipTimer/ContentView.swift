@@ -12,7 +12,10 @@ struct ContentView: View {
 
                 VStack {
                     Text("Flip your phone to start the timer")
+                        .foregroundColor(Color(UIColor.systemGray))
                 }
+
+                Spacer().frame(maxHeight: 200)
             }
             .navigationBarItems(
                 trailing: Button(
