@@ -1,14 +1,10 @@
-//
-//  SettingsView.swift
-//  FlipTimer
-//
-//  Created by Dan on 04/12/2020.
-//
-
 import SwiftUI
 
 struct SettingsView: View {
     @Binding var showSettingsView: Bool
+
+    let twitterURL = URL(string: "https://twitter.com/dankimio")!
+    let websiteURL = URL(string: "https://dankim.io")
 
     var body: some View {
         NavigationView {
@@ -19,9 +15,16 @@ struct SettingsView: View {
                 ) {
                     Toggle("Strict mode", isOn: .constant(true))
                 }
+
+
                 Section(header: Text("Help")) {
                     NavigationLink("Open Tutorial", destination: Text(""))
                     NavigationLink("Share Feedback", destination: Text(""))
+                }
+
+                Section(header: Text("Follow")) {
+                    Link("Follow on Twitter", destination: twitterURL)
+                    Link("Open Website", destination: twitterURL)
                 }
             }
             .listStyle(InsetGroupedListStyle())
@@ -34,10 +37,10 @@ struct SettingsView: View {
             )
         }
     }
-}
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView(showSettingsView: .constant(true))
+    struct SettingsView_Previews: PreviewProvider {
+        static var previews: some View {
+            SettingsView(showSettingsView: .constant(true))
+        }
     }
 }
