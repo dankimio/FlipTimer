@@ -37,7 +37,7 @@ struct ContentView: View {
             .navigationBarItems(
                 trailing: Button(
                     action: { showSettingsView.toggle() },
-                    label: { Image(systemName: "gearshape.fill") }
+                    label: { Image(systemName: "gearshape.fill").imageScale(.large) }
                 )
             )
         }
