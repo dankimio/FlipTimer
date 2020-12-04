@@ -10,6 +10,9 @@ enum TimerMode {
 class TimerManager: ObservableObject {
     @Published var timerMode: TimerMode = .initial
 
+    private var startedAt: Date?
+    private var secondsElapsed = 0
+
     // Source: https://gist.github.com/skl/a093291abc0a90a640e50f78888456e7
     @objc func proximityDidChange(notification: NSNotification) {
         print("proximityDidChange")
@@ -23,6 +26,7 @@ class TimerManager: ObservableObject {
         // BeginRecording
         AudioServicesPlayAlertSound(SystemSoundID(1117))
 
+        startedAt = Date()
         timerMode = .running
     }
 
@@ -30,6 +34,11 @@ class TimerManager: ObservableObject {
         // EndRecording
         AudioServicesPlayAlertSound(SystemSoundID(1118))
 
+        let timeIntervalSinceStartedAt = Date().timeIntervalSince(startedAt!)
+        let timeDifferenceInSeconds = Int(timeIntervalSinceStartedAt)
+        secondsElapsed += timeDifferenceInSeconds
         timerMode = .paused
+
+        print(secondsElapsed)
     }
 }
