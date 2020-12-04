@@ -35,6 +35,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37088869257AB46A0037C671 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				374A674125791BAA00F56C72 /* ContentView.swift */,
+				3783EA58257991470058C69E /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		374A673325791BAA00F56C72 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +63,11 @@
 		374A673E25791BAA00F56C72 /* FlipTimer */ = {
 			isa = PBXGroup;
 			children = (
+				37088869257AB46A0037C671 /* Views */,
 				374A673F25791BAA00F56C72 /* FlipTimerApp.swift */,
-				374A674125791BAA00F56C72 /* ContentView.swift */,
 				374A674325791BAB00F56C72 /* Assets.xcassets */,
 				374A674825791BAB00F56C72 /* Info.plist */,
 				374A674525791BAB00F56C72 /* Preview Content */,
-				3783EA58257991470058C69E /* SettingsView.swift */,
 			);
 			path = FlipTimer;
 			sourceTree = "<group>";
