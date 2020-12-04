@@ -4,6 +4,8 @@ import AVFoundation
 // Source: https://gist.github.com/skl/a093291abc0a90a640e50f78888456e7
 class ProximityObserver {
     @objc func didChange(notification: NSNotification) {
+        print("ProximityObserver.didChange")
+
         guard let device = notification.object as? UIDevice else { return }
 
         // BeginRecording, EndRecording
@@ -70,22 +72,23 @@ struct ContentView: View {
         })
     }
 
-    func activateProximitySensor() {
+    private func activateProximitySensor() {
         print("activateProximitySensor")
-        UIDevice.current.isProximityMonitoringEnabled = true
 
-        if UIDevice.current.isProximityMonitoringEnabled {
-            NotificationCenter.default.addObserver(
-                proximityObserver,
-                selector: #selector(proximityObserver.didChange),
-                name: UIDevice.proximityStateDidChangeNotification,
-                object: UIDevice.current
-            )
-        }
+        UIDevice.current.isProximityMonitoringEnabled = true
+        guard UIDevice.current.isProximityMonitoringEnabled else { return }
+
+        NotificationCenter.default.addObserver(
+            proximityObserver,
+            selector: #selector(proximityObserver.didChange),
+            name: UIDevice.proximityStateDidChangeNotification,
+            object: UIDevice.current
+        )
     }
 
-    func deactivateProximitySensor() {
+    private func deactivateProximitySensor() {
         print("deactivateProximitySensor")
+
         UIDevice.current.isProximityMonitoringEnabled = false
         NotificationCenter.default.removeObserver(
             proximityObserver,
