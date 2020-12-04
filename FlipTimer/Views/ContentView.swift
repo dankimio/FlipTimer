@@ -4,18 +4,11 @@ import AVFoundation
 // Source: https://gist.github.com/skl/a093291abc0a90a640e50f78888456e7
 class ProximityObserver {
     @objc func didChange(notification: NSNotification) {
-        print("ProximityObserver.didChange")
-        if let device = notification.object as? UIDevice {
-            print(device.proximityState)
+        guard let device = notification.object as? UIDevice else { return }
 
-            if device.proximityState {
-                // BeginRecording
-                AudioServicesPlayAlertSound(SystemSoundID(1117))
-            } else {
-                // EndRecording
-                AudioServicesPlayAlertSound(SystemSoundID(1118))
-            }
-        }
+        // BeginRecording, EndRecording
+        let systemSound = device.proximityState ? SystemSoundID(1117) : SystemSoundID(1118)
+        AudioServicesPlayAlertSound(systemSound)
     }
 }
 
