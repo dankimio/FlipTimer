@@ -12,7 +12,7 @@ class TimerManager: ObservableObject {
 
     // Source: https://gist.github.com/skl/a093291abc0a90a640e50f78888456e7
     @objc func proximityDidChange(notification: NSNotification) {
-        print("ProximityObserver.didChange")
+        print("proximityDidChange")
 
         guard let device = notification.object as? UIDevice else { return }
 
