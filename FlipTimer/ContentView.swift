@@ -7,7 +7,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 Text("24:59")
-                    .font(.system(size: 96, weight: .light, design: .monospaced))
+                    .font(.system(size: 96, weight: .regular, design: .monospaced))
                     .padding(.bottom, 30)
 
                 VStack {
