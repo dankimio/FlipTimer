@@ -10,16 +10,16 @@ enum TimerMode {
 class TimerManager: ObservableObject {
     @Published var timerMode: TimerMode = .initial
 
-    private let timerLength = 25 * 60
+    private let timerLength = 5 // 25 * 60
 
     private var startedAt: Date?
     @Published private var secondsElapsed = 0
 
     var timeLeft: String {
-        let timeDifferenceInSeconds = timerLength - secondsElapsed
+        let minutesLeft = secondsUntilTimerEnds / 60
+        let secondsLeft = secondsUntilTimerEnds % 60
 
-        let minutesLeft = timeDifferenceInSeconds / 60
-        let secondsLeft = timeDifferenceInSeconds % 60
+        guard minutesLeft >= 0 && secondsLeft >= 0 else { return "00:00" }
 
         let formattedMinutes = String(format: "%02d", minutesLeft)
         let formattedSeconds = String(format: "%02d", secondsLeft)
@@ -42,6 +42,10 @@ class TimerManager: ObservableObject {
         guard let device = notification.object as? UIDevice else { return }
 
         device.proximityState ? proximitySensorDidClose() : proximitySensorDidUnclose()
+    }
+
+    private var secondsUntilTimerEnds: Int {
+        return timerLength - secondsElapsed
     }
 
     private func proximitySensorDidClose() {
