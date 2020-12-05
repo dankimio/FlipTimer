@@ -19,13 +19,14 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("Help")) {
-                    NavigationLink("Open Tutorial", destination: Text(""))
                     NavigationLink("Share Feedback", destination: Text(""))
                 }
 
-                Section(header: Text("Follow")) {
-                    Link("Follow on Twitter", destination: twitterURL)
-                    Link("Open Website", destination: twitterURL)
+                if false {
+                    Section(header: Text("Follow")) {
+                        Link("Follow on Twitter", destination: twitterURL)
+                        Link("Open Website", destination: twitterURL)
+                    }
                 }
             }
             .listStyle(InsetGroupedListStyle())
