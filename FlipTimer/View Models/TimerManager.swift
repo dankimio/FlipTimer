@@ -65,6 +65,17 @@ class TimerManager: ObservableObject {
         let timeIntervalSinceStartedAt = Date().timeIntervalSince(startedAt!)
         let timeDifferenceInSeconds = Int(timeIntervalSinceStartedAt)
         secondsElapsed += timeDifferenceInSeconds
+
+        guard secondsUntilTimerEnds > 0 else {
+            withAnimation {
+                timerMode = .initial
+            }
+            startedAt = nil
+            secondsElapsed = 0
+
+            return
+        }
+
         withAnimation {
             timerMode = .paused
         }
