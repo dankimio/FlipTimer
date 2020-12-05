@@ -4,7 +4,8 @@ struct SettingsView: View {
     @Binding var showSettingsView: Bool
 
     let twitterURL = URL(string: "https://twitter.com/dankimio")!
-    let websiteURL = URL(string: "https://dankim.io")
+    let websiteURL = URL(string: "https://dankim.io")!
+    let feedbackURL = URL(string: "https://forms.gle/AhLV8vtPq4511zij6")!
 
     var body: some View {
         NavigationView {
@@ -19,7 +20,7 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("Help")) {
-                    NavigationLink("Share Feedback", destination: Text(""))
+                    Link("Share Feedback", destination: feedbackURL)
                 }
 
                 if false {
