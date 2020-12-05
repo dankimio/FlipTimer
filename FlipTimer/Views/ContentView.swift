@@ -20,16 +20,21 @@ struct ContentView: View {
                     }
 
                     if timerManager.timerMode == .paused {
-                        Button(action: { timerManager.stop() }, label: {
-                            HStack {
-                                Spacer()
-                                Text("Stop").foregroundColor(.white)
-                                Spacer()
+                        Button(
+                            action: {
+                                timerManager.stop()
+                            },
+                            label: {
+                                HStack {
+                                    Spacer()
+                                    Text("Stop").foregroundColor(.white)
+                                    Spacer()
+                                }
+                                .padding()
+                                .background(Color.accentColor)
+                                .cornerRadius(12)
                             }
-                            .padding()
-                            .background(Color.accentColor)
-                            .cornerRadius(12)
-                        })
+                        )
                     }
                 }.padding(.horizontal)
 

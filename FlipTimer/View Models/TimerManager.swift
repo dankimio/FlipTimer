@@ -28,7 +28,9 @@ class TimerManager: ObservableObject {
     }
 
     func stop() {
-        timerMode = .initial
+        withAnimation {
+            timerMode = .initial
+        }
         startedAt = nil
         secondsElapsed = 0
     }
@@ -47,7 +49,9 @@ class TimerManager: ObservableObject {
         AudioServicesPlayAlertSound(SystemSoundID(1117))
 
         startedAt = Date()
-        timerMode = .running
+        withAnimation {
+            timerMode = .running
+        }
     }
 
     private func proximitySensorDidUnclose() {
@@ -57,7 +61,9 @@ class TimerManager: ObservableObject {
         let timeIntervalSinceStartedAt = Date().timeIntervalSince(startedAt!)
         let timeDifferenceInSeconds = Int(timeIntervalSinceStartedAt)
         secondsElapsed += timeDifferenceInSeconds
-        timerMode = .paused
+        withAnimation {
+            timerMode = .paused
+        }
 
         print(secondsElapsed)
     }
