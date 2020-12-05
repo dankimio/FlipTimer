@@ -82,7 +82,7 @@ class TimerManager: ObservableObject {
         // EndRecording sound
         AudioServicesPlayAlertSound(SystemSoundID(1118))
 
-        print(secondsElapsed)
+        print("secondsElapsed: \(secondsElapsed)")
     }
 
     private func tryToFinish() {
