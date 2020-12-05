@@ -53,8 +53,6 @@ class TimerManager: ObservableObject {
         AudioServicesPlayAlertSound(SystemSoundID(1117))
 
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(secondsUntilTimerEnds)) {
-            // Play the sound when the timer ends
-            AudioServicesPlayAlertSound(SystemSoundID(1025))
         }
 
         startedAt = Date()
@@ -64,9 +62,6 @@ class TimerManager: ObservableObject {
     }
 
     private func proximitySensorDidUnclose() {
-        // EndRecording sound
-        AudioServicesPlayAlertSound(SystemSoundID(1118))
-
         let timeIntervalSinceStartedAt = Date().timeIntervalSince(startedAt!)
         let timeDifferenceInSeconds = Int(timeIntervalSinceStartedAt)
         secondsElapsed += timeDifferenceInSeconds
@@ -84,6 +79,9 @@ class TimerManager: ObservableObject {
         withAnimation {
             timerMode = .paused
         }
+
+        // EndRecording sound
+        AudioServicesPlayAlertSound(SystemSoundID(1118))
 
         print(secondsElapsed)
     }
