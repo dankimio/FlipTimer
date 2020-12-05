@@ -63,9 +63,7 @@ class TimerManager: ObservableObject {
     }
 
     private func proximitySensorDidUnclose() {
-        let timeIntervalSinceStartedAt = Date().timeIntervalSince(startedAt!)
-        let timeDifferenceInSeconds = Int(timeIntervalSinceStartedAt)
-        secondsElapsed += timeDifferenceInSeconds
+        secondsElapsed += secondsSinceStartedAt
 
         guard secondsUntilTimerEnds > 0 else {
             withAnimation {
@@ -88,11 +86,20 @@ class TimerManager: ObservableObject {
     }
 
     private func tryToFinish() {
-        guard timerMode == .running && secondsUntilTimerEnds <= 0 else {
+        let currentSecondsSinceStartedAt = secondsElapsed + secondsSinceStartedAt
+        let currentSecondsUntilTimerEnds = timerLength - currentSecondsSinceStartedAt
+
+        print("currentSecondsUntilTimerEnds: \(currentSecondsUntilTimerEnds)")
+        guard timerMode == .running && currentSecondsUntilTimerEnds <= 0 else {
             return
         }
 
         // Play the sound when the timer ends
         AudioServicesPlayAlertSound(SystemSoundID(1025))
+    }
+
+    private var secondsSinceStartedAt: Int {
+        let timeIntervalSinceStartedAt = Date().timeIntervalSince(startedAt!)
+        return Int(timeIntervalSinceStartedAt)
     }
 }
