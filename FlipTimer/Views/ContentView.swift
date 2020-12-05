@@ -12,6 +12,7 @@ struct ContentView: View {
                 Text("\(timerManager.timeLeft)")
                     .font(.system(size: 96, weight: .regular, design: .monospaced))
                     .padding(.bottom, 30)
+                    .minimumScaleFactor(0.5)
                 
                 VStack {
                     if timerManager.timerMode == .initial {
@@ -91,6 +92,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+                .previewDevice("iPod touch (7th generation)")
+        }
     }
 }
