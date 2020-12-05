@@ -1,7 +1,7 @@
 import SwiftUI
 import AVFoundation
 
-class TimerManager: ObservableObject {
+final class TimerManager: ObservableObject {
     @Published var timerMode: TimerMode = .initial
 
     private let timerLength = 25 * 60
