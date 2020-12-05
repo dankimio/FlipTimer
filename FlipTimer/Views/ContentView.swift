@@ -9,7 +9,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("24:59")
+                Text("\(timerManager.timeLeft)")
                     .font(.system(size: 96, weight: .regular, design: .monospaced))
                     .padding(.bottom, 30)
                 
