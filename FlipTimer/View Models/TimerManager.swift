@@ -53,6 +53,7 @@ class TimerManager: ObservableObject {
         AudioServicesPlayAlertSound(SystemSoundID(1117))
 
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(secondsUntilTimerEnds)) {
+            self.tryToFinish()
         }
 
         startedAt = Date()
@@ -84,5 +85,14 @@ class TimerManager: ObservableObject {
         AudioServicesPlayAlertSound(SystemSoundID(1118))
 
         print(secondsElapsed)
+    }
+
+    private func tryToFinish() {
+        guard timerMode == .running else {
+            return
+        }
+
+        // Play the sound when the timer ends
+        AudioServicesPlayAlertSound(SystemSoundID(1025))
     }
 }
