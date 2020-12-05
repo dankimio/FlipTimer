@@ -4,7 +4,7 @@ import AVFoundation
 struct ContentView: View {
     @State private var showSettingsView = false
 
-    @ObservedObject var timerManager = TimerManager()
+    @StateObject var timerManager = TimerManager()
     
     var body: some View {
         NavigationView {
