@@ -52,6 +52,11 @@ class TimerManager: ObservableObject {
         // BeginRecording sound
         AudioServicesPlayAlertSound(SystemSoundID(1117))
 
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(secondsUntilTimerEnds)) {
+            // Play the sound when the timer ends
+            AudioServicesPlayAlertSound(SystemSoundID(1025))
+        }
+
         startedAt = Date()
         withAnimation {
             timerMode = .running
