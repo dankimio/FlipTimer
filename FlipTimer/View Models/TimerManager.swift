@@ -88,7 +88,7 @@ class TimerManager: ObservableObject {
     }
 
     private func tryToFinish() {
-        guard timerMode == .running else {
+        guard timerMode == .running && secondsUntilTimerEnds <= 0 else {
             return
         }
 
