@@ -43,7 +43,7 @@ class TimerManager: ObservableObject {
     }
 
     private func proximitySensorDidClose() {
-        // BeginRecording
+        // BeginRecording sound
         AudioServicesPlayAlertSound(SystemSoundID(1117))
 
         startedAt = Date()
@@ -51,7 +51,7 @@ class TimerManager: ObservableObject {
     }
 
     private func proximitySensorDidUnclose() {
-        // EndRecording
+        // EndRecording sound
         AudioServicesPlayAlertSound(SystemSoundID(1118))
 
         let timeIntervalSinceStartedAt = Date().timeIntervalSince(startedAt!)
