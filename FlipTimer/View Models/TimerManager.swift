@@ -10,7 +10,7 @@ enum TimerMode {
 class TimerManager: ObservableObject {
     @Published var timerMode: TimerMode = .initial
 
-    private let timerLength = 5 // 25 * 60
+    private let timerLength = 25 * 60
 
     private var startedAt: Date?
     @Published private var secondsElapsed = 0
