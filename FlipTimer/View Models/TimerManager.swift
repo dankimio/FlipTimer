@@ -1,12 +1,6 @@
 import SwiftUI
 import AVFoundation
 
-enum TimerMode {
-    case initial
-    case running
-    case paused
-}
-
 class TimerManager: ObservableObject {
     @Published var timerMode: TimerMode = .initial
 

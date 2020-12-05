@@ -12,6 +12,7 @@
 		374A674425791BAB00F56C72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374A674325791BAB00F56C72 /* Assets.xcassets */; };
 		374A674725791BAB00F56C72 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374A674625791BAB00F56C72 /* Preview Assets.xcassets */; };
 		3783EA59257991470058C69E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783EA58257991470058C69E /* SettingsView.swift */; };
+		37A33CBA257C19A2003F2B96 /* TimerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A33CB9257C19A2003F2B96 /* TimerMode.swift */; };
 		37BC0AB9257ABE5900238884 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BC0AB8257ABE5900238884 /* TimerManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		374A674625791BAB00F56C72 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		374A674825791BAB00F56C72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3783EA58257991470058C69E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		37A33CB9257C19A2003F2B96 /* TimerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerMode.swift; sourceTree = "<group>"; };
 		37BC0AB8257ABE5900238884 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		37BEE116257ADD3F00F1F787 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 		374A673E25791BAA00F56C72 /* FlipTimer */ = {
 			isa = PBXGroup;
 			children = (
+				37A33CB8257C1999003F2B96 /* Models */,
 				37BC0AB7257ABE4900238884 /* View Models */,
 				37088869257AB46A0037C671 /* Views */,
 				374A673F25791BAA00F56C72 /* FlipTimerApp.swift */,
@@ -83,6 +86,14 @@
 				374A674625791BAB00F56C72 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		37A33CB8257C1999003F2B96 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				37A33CB9257C19A2003F2B96 /* TimerMode.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		37BC0AB7257ABE4900238884 /* View Models */ = {
@@ -164,6 +175,7 @@
 			files = (
 				3783EA59257991470058C69E /* SettingsView.swift in Sources */,
 				37BC0AB9257ABE5900238884 /* TimerManager.swift in Sources */,
+				37A33CBA257C19A2003F2B96 /* TimerMode.swift in Sources */,
 				374A674225791BAA00F56C72 /* ContentView.swift in Sources */,
 				374A674025791BAA00F56C72 /* FlipTimerApp.swift in Sources */,
 			);
