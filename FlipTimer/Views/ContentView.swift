@@ -20,7 +20,7 @@ struct ContentView: View {
                     }
 
                     if timerManager.timerMode == .paused {
-                        Button(action: {}, label: {
+                        Button(action: { timerManager.stop() }, label: {
                             HStack {
                                 Spacer()
                                 Text("Stop").foregroundColor(.white)
