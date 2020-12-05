@@ -94,7 +94,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ContentView()
-                .previewDevice("iPod touch (7th generation)")
         }
     }
 }
