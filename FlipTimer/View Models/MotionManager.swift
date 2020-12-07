@@ -26,4 +26,12 @@ final class MotionManager: ObservableObject {
             self.z = data.acceleration.z
         }
     }
+
+    private func updateDeviceStatus() {
+        if self.z > 0.9 && self.z < 1.1 {
+            isDeviceUpsideDown = true
+        } else {
+            isDeviceUpsideDown = false
+        }
+    }
 }

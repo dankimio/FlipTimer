@@ -55,38 +55,13 @@ struct ContentView: View {
         .onAppear(perform: {
             print("onAppear")
 
-            activateProximitySensor()
+            timerManager.activateProximitySensor()
         })
         .onDisappear(perform: {
             print("onDisappear")
 
-            deactivateProximitySensor()
+            timerManager.deactivateProximitySensor()
         })
-    }
-
-    private func activateProximitySensor() {
-        print("activateProximitySensor")
-
-        UIDevice.current.isProximityMonitoringEnabled = true
-        guard UIDevice.current.isProximityMonitoringEnabled else { return }
-
-        NotificationCenter.default.addObserver(
-            timerManager,
-            selector: #selector(timerManager.proximityDidChange),
-            name: UIDevice.proximityStateDidChangeNotification,
-            object: UIDevice.current
-        )
-    }
-
-    private func deactivateProximitySensor() {
-        print("deactivateProximitySensor")
-        
-        UIDevice.current.isProximityMonitoringEnabled = false
-        NotificationCenter.default.removeObserver(
-            timerManager,
-            name: UIDevice.proximityStateDidChangeNotification,
-            object: UIDevice.current
-        )
     }
 }
 

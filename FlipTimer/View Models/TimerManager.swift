@@ -42,6 +42,31 @@ final class TimerManager: ObservableObject {
         return timerLength - secondsElapsed
     }
 
+    func activateProximitySensor() {
+        print("activateProximitySensor")
+
+        UIDevice.current.isProximityMonitoringEnabled = true
+        guard UIDevice.current.isProximityMonitoringEnabled else { return }
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(proximityDidChange),
+            name: UIDevice.proximityStateDidChangeNotification,
+            object: UIDevice.current
+        )
+    }
+
+    func deactivateProximitySensor() {
+        print("deactivateProximitySensor")
+
+        UIDevice.current.isProximityMonitoringEnabled = false
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIDevice.proximityStateDidChangeNotification,
+            object: UIDevice.current
+        )
+    }
+
     private func proximitySensorDidClose() {
         // BeginRecording sound
         AudioServicesPlayAlertSound(SystemSoundID(1117))
