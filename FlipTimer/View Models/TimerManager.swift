@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreMotion
 import AVFoundation
 
 final class TimerManager: ObservableObject {
@@ -35,7 +36,7 @@ final class TimerManager: ObservableObject {
 
         guard let device = notification.object as? UIDevice else { return }
 
-        device.proximityState ? proximitySensorDidClose() : proximitySensorDidUnclose()
+        device.proximityState ? deviceFlipped() : deviceUnflipped()
     }
 
     private var secondsUntilTimerEnds: Int {
@@ -46,7 +47,10 @@ final class TimerManager: ObservableObject {
         print("activateProximitySensor")
 
         UIDevice.current.isProximityMonitoringEnabled = true
-        guard UIDevice.current.isProximityMonitoringEnabled else { return }
+        guard UIDevice.current.isProximityMonitoringEnabled else {
+            startMotionManager()
+            return
+        }
 
         NotificationCenter.default.addObserver(
             self,
@@ -67,7 +71,7 @@ final class TimerManager: ObservableObject {
         )
     }
 
-    private func proximitySensorDidClose() {
+    private func deviceFlipped() {
         // BeginRecording sound
         AudioServicesPlayAlertSound(SystemSoundID(1117))
 
@@ -81,7 +85,7 @@ final class TimerManager: ObservableObject {
         }
     }
 
-    private func proximitySensorDidUnclose() {
+    private func deviceUnflipped() {
         secondsElapsed += secondsSinceStartedAt
 
         guard secondsUntilTimerEnds > 0 else {
@@ -120,5 +124,47 @@ final class TimerManager: ObservableObject {
     private var secondsSinceStartedAt: Int {
         let timeIntervalSinceStartedAt = Date().timeIntervalSince(startedAt!)
         return Int(timeIntervalSinceStartedAt)
+    }
+
+    // MARK: - MotionManager
+    // TODO: Extract
+
+    private var motionManager = CMMotionManager()
+
+    private var isDeviceFlipped = false
+    private var userBrightness: CGFloat?
+
+    func startMotionManager() {
+        guard motionManager.isAccelerometerAvailable else { return }
+
+        motionManager.accelerometerUpdateInterval = 1.0 / 2.0
+        motionManager.startAccelerometerUpdates(to: .main) { (accelerometerData, error) in
+            guard error == nil else { return }
+            guard let data = accelerometerData else { return }
+
+            let x = data.acceleration.x
+            let y = data.acceleration.y
+            let z = data.acceleration.z
+
+            if z > 0.9 && z < 1.1 {
+                print("x: \(x), y: \(y), z: \(z)")
+                if !self.isDeviceFlipped {
+                    self.deviceFlipped()
+
+                    self.userBrightness = UIScreen.main.brightness
+                    UIScreen.main.brightness = 0.0
+                }
+                self.isDeviceFlipped = true
+            } else {
+                if self.isDeviceFlipped {
+                    self.deviceUnflipped()
+                }
+                self.isDeviceFlipped = false
+
+                if self.userBrightness != nil {
+                    UIScreen.main.brightness = self.userBrightness!
+                }
+            }
+        }
     }
 }
