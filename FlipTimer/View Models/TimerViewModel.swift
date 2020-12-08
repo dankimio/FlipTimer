@@ -95,10 +95,7 @@ final class TimerViewModel: ObservableObject {
             timerMode = .running
         }
 
-        if !proximityMonitoringAvailable {
-            userBrightness = UIScreen.main.brightness
-            UIScreen.main.brightness = 0.0
-        }
+        dimScreen()
     }
 
     private func deviceUnflipped() {
@@ -123,9 +120,7 @@ final class TimerViewModel: ObservableObject {
         // EndRecording sound
         AudioServicesPlayAlertSound(SystemSoundID(1118))
 
-        if !proximityMonitoringAvailable && userBrightness != nil {
-            UIScreen.main.brightness = self.userBrightness!
-        }
+        brightenScreen()
 
         print("secondsElapsed: \(secondsElapsed)")
     }
@@ -148,6 +143,23 @@ final class TimerViewModel: ObservableObject {
 
         let timeIntervalSinceStartedAt = Date().timeIntervalSince(startedAt)
         return Int(timeIntervalSinceStartedAt)
+    }
+
+    private func dimScreen() {
+        guard !proximityMonitoringAvailable else {
+            return
+        }
+
+        userBrightness = UIScreen.main.brightness
+        UIScreen.main.brightness = 0.0
+    }
+
+    private func brightenScreen() {
+        guard !proximityMonitoringAvailable && userBrightness != nil else {
+            return
+        }
+
+        UIScreen.main.brightness = self.userBrightness!
     }
 
     func startMotionManager() {
