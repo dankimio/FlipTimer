@@ -30,13 +30,16 @@ final class TimerViewModel: ObservableObject {
     init() {
         $deviceIsFlipped
             .dropFirst()
+            .removeDuplicates()
             .sink { (value) in
+                print("KEEK: \(value)")
                 value ? self.deviceFlipped() : self.deviceUnflipped()
             }
             .store(in: &cancellable)
 
         NotificationCenter.default.publisher(for: UIDevice.proximityStateDidChangeNotification)
             .sink { (notification) in
+                print("KEK????")
                 guard let device = notification.object as? UIDevice else { return }
 
                 self.deviceIsFlipped = device.proximityState
@@ -57,13 +60,15 @@ final class TimerViewModel: ObservableObject {
     }
 
     func startMonitoring() {
-        print("activateProximitySensor")
-
         UIDevice.current.isProximityMonitoringEnabled = true
+
         guard UIDevice.current.isProximityMonitoringEnabled else {
+            print("Proximity monitoring unavailable")
             startMotionManager()
             return
         }
+
+        print("Activated proximity monitoring")
     }
 
     func stopMonitoring() {
@@ -73,6 +78,8 @@ final class TimerViewModel: ObservableObject {
     }
 
     private func deviceFlipped() {
+        print("Device flipped")
+
         // BeginRecording sound
         AudioServicesPlayAlertSound(SystemSoundID(1117))
 
@@ -87,6 +94,8 @@ final class TimerViewModel: ObservableObject {
     }
 
     private func deviceUnflipped() {
+        print("Device unflipped")
+
         secondsElapsed += secondsSinceStartedAt
 
         guard secondsUntilTimerEnds > 0 else {
@@ -134,7 +143,6 @@ final class TimerViewModel: ObservableObject {
 
     private var motionManager = CMMotionManager()
 
-    private var isDeviceFlipped = false
     private var userBrightness: CGFloat?
 
     func startMotionManager() {
@@ -151,23 +159,23 @@ final class TimerViewModel: ObservableObject {
 
             if z > 0.9 && z < 1.1 {
                 print("x: \(x), y: \(y), z: \(z)")
-                if !self.isDeviceFlipped {
-                    self.deviceFlipped()
+                if !self.deviceIsFlipped {
+                    self.deviceIsFlipped = true
 
                     self.userBrightness = UIScreen.main.brightness
                     UIScreen.main.brightness = 0.0
                 }
-                self.isDeviceFlipped = true
             } else {
-                if self.isDeviceFlipped {
-                    self.deviceUnflipped()
+                if self.deviceIsFlipped {
+                    self.deviceIsFlipped = false
                 }
-                self.isDeviceFlipped = false
 
                 if self.userBrightness != nil {
                     UIScreen.main.brightness = self.userBrightness!
                 }
             }
         }
+
+        print("Started accelerometer monitoring")
     }
 }
