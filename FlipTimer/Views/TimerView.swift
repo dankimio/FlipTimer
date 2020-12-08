@@ -4,26 +4,26 @@ import AVFoundation
 struct TimerView: View {
     @State private var showSettingsView = false
 
-    @StateObject var timerManager = TimerManager()
+    @StateObject var viewModel = TimerViewModel()
     
     var body: some View {
         NavigationView {
             VStack {
-                Text("\(timerManager.timeLeft)")
+                Text("\(viewModel.timeLeft)")
                     .font(.system(size: 96, weight: .regular, design: .monospaced))
                     .padding(.bottom, 30)
                     .minimumScaleFactor(0.5)
                 
                 VStack {
-                    if timerManager.timerMode == .initial {
+                    if viewModel.timerMode == .initial {
                         Text("Flip your phone to start the timer")
                             .foregroundColor(Color(UIColor.systemGray))
                     }
 
-                    if timerManager.timerMode == .paused {
+                    if viewModel.timerMode == .paused {
                         Button(
                             action: {
-                                timerManager.stop()
+                                viewModel.stop()
                             },
                             label: {
                                 HStack {
@@ -55,12 +55,12 @@ struct TimerView: View {
         .onAppear(perform: {
             print("onAppear")
 
-            timerManager.activateProximitySensor()
+            viewModel.activateProximitySensor()
         })
         .onDisappear(perform: {
             print("onDisappear")
 
-            timerManager.deactivateProximitySensor()
+            viewModel.deactivateProximitySensor()
         })
     }
 }

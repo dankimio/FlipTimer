@@ -13,7 +13,7 @@
 		374A674725791BAB00F56C72 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374A674625791BAB00F56C72 /* Preview Assets.xcassets */; };
 		3783EA59257991470058C69E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783EA58257991470058C69E /* SettingsView.swift */; };
 		37A33CBA257C19A2003F2B96 /* TimerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A33CB9257C19A2003F2B96 /* TimerMode.swift */; };
-		37BC0AB9257ABE5900238884 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BC0AB8257ABE5900238884 /* TimerManager.swift */; };
+		37BC0AB9257ABE5900238884 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BC0AB8257ABE5900238884 /* TimerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		374A674825791BAB00F56C72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3783EA58257991470058C69E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		37A33CB9257C19A2003F2B96 /* TimerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerMode.swift; sourceTree = "<group>"; };
-		37BC0AB8257ABE5900238884 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		37BC0AB8257ABE5900238884 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		37BEE116257ADD3F00F1F787 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,7 +99,7 @@
 		37BC0AB7257ABE4900238884 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				37BC0AB8257ABE5900238884 /* TimerManager.swift */,
+				37BC0AB8257ABE5900238884 /* TimerViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -174,7 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3783EA59257991470058C69E /* SettingsView.swift in Sources */,
-				37BC0AB9257ABE5900238884 /* TimerManager.swift in Sources */,
+				37BC0AB9257ABE5900238884 /* TimerViewModel.swift in Sources */,
 				37A33CBA257C19A2003F2B96 /* TimerMode.swift in Sources */,
 				374A674225791BAA00F56C72 /* TimerView.swift in Sources */,
 				374A674025791BAA00F56C72 /* FlipTimerApp.swift in Sources */,
