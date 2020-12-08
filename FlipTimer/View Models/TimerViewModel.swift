@@ -10,8 +10,11 @@ final class TimerViewModel: ObservableObject {
 
     private var startedAt: Date?
     @Published private var secondsElapsed = 0
-
     @Published private var deviceIsFlipped = false
+
+    private var proximityMonitoringAvailable = false
+    private var motionManager = CMMotionManager()
+    private var userBrightness: CGFloat?
 
     var timeLeft: String {
         let minutesLeft = secondsUntilTimerEnds / 60
@@ -68,6 +71,8 @@ final class TimerViewModel: ObservableObject {
             return
         }
 
+        proximityMonitoringAvailable = true
+
         print("Activated proximity monitoring")
     }
 
@@ -90,6 +95,11 @@ final class TimerViewModel: ObservableObject {
         startedAt = Date()
         withAnimation {
             timerMode = .running
+        }
+
+        if !proximityMonitoringAvailable {
+            userBrightness = UIScreen.main.brightness
+            UIScreen.main.brightness = 0.0
         }
     }
 
@@ -115,6 +125,10 @@ final class TimerViewModel: ObservableObject {
         // EndRecording sound
         AudioServicesPlayAlertSound(SystemSoundID(1118))
 
+        if !proximityMonitoringAvailable && userBrightness != nil {
+            UIScreen.main.brightness = self.userBrightness!
+        }
+
         print("secondsElapsed: \(secondsElapsed)")
     }
 
@@ -138,13 +152,6 @@ final class TimerViewModel: ObservableObject {
         return Int(timeIntervalSinceStartedAt)
     }
 
-    // MARK: - MotionManager
-    // TODO: Extract
-
-    private var motionManager = CMMotionManager()
-
-    private var userBrightness: CGFloat?
-
     func startMotionManager() {
         guard motionManager.isAccelerometerAvailable else { return }
 
@@ -158,20 +165,13 @@ final class TimerViewModel: ObservableObject {
             let z = data.acceleration.z
 
             if z > 0.9 && z < 1.1 {
-                print("x: \(x), y: \(y), z: \(z)")
+                print("z: \(x), y: \(y), z: \(z)")
                 if !self.deviceIsFlipped {
                     self.deviceIsFlipped = true
-
-                    self.userBrightness = UIScreen.main.brightness
-                    UIScreen.main.brightness = 0.0
                 }
             } else {
                 if self.deviceIsFlipped {
                     self.deviceIsFlipped = false
-                }
-
-                if self.userBrightness != nil {
-                    UIScreen.main.brightness = self.userBrightness!
                 }
             }
         }
