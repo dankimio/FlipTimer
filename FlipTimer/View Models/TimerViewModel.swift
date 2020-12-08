@@ -8,26 +8,17 @@ final class TimerViewModel: ObservableObject {
 
     private let timerLength = 25 * 60
 
-    private var startedAt: Date?
+    // Timer
     @Published private var secondsElapsed = 0
     @Published private var deviceIsFlipped = false
-
+    private var startedAt: Date?
     private var proximityMonitoringAvailable = false
+
+    // Accelerometer (iPad)
     private var motionManager = CMMotionManager()
     private var userBrightness: CGFloat?
 
-    var timeLeft: String {
-        let minutesLeft = secondsUntilTimerEnds / 60
-        let secondsLeft = secondsUntilTimerEnds % 60
-
-        guard minutesLeft >= 0 && secondsLeft >= 0 else { return "00:00" }
-
-        let formattedMinutes = String(format: "%02d", minutesLeft)
-        let formattedSeconds = String(format: "%02d", secondsLeft)
-
-        return "\(formattedMinutes):\(formattedSeconds)"
-    }
-
+    // Combine
     private var cancellable = Set<AnyCancellable>()
 
     init() {
@@ -46,6 +37,18 @@ final class TimerViewModel: ObservableObject {
                 self.deviceIsFlipped = device.proximityState
             }
             .store(in: &cancellable)
+    }
+
+    var timeLeft: String {
+        let minutesLeft = secondsUntilTimerEnds / 60
+        let secondsLeft = secondsUntilTimerEnds % 60
+
+        guard minutesLeft >= 0 && secondsLeft >= 0 else { return "00:00" }
+
+        let formattedMinutes = String(format: "%02d", minutesLeft)
+        let formattedSeconds = String(format: "%02d", secondsLeft)
+
+        return "\(formattedMinutes):\(formattedSeconds)"
     }
 
     func stop() {
