@@ -4,9 +4,8 @@ import AVFoundation
 import Combine
 
 final class TimerViewModel: ObservableObject {
+    @AppStorage("timerLength") var timerLength: TimerLength = .min25
     @Published var timerMode: TimerMode = .initial
-
-    private let timerLength = 25 * 60
 
     // Timer
     @Published private var secondsElapsed = 0
@@ -60,7 +59,7 @@ final class TimerViewModel: ObservableObject {
     }
 
     private var secondsUntilTimerEnds: Int {
-        return timerLength - secondsElapsed
+        return timerLength.inSeconds - secondsElapsed
     }
 
     func startMonitoring() {
@@ -130,7 +129,7 @@ final class TimerViewModel: ObservableObject {
 
     private func tryToFinish() {
         let currentSecondsSinceStartedAt = secondsElapsed + secondsSinceStartedAt
-        let currentSecondsUntilTimerEnds = timerLength - currentSecondsSinceStartedAt
+        let currentSecondsUntilTimerEnds = timerLength.inSeconds - currentSecondsSinceStartedAt
 
         print("currentSecondsUntilTimerEnds: \(currentSecondsUntilTimerEnds)")
         guard timerMode == .running && currentSecondsUntilTimerEnds <= 0 else {
