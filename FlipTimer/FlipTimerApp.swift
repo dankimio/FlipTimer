@@ -4,7 +4,7 @@ import SwiftUI
 struct FlipTimerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TimerView()
         }
     }
 }

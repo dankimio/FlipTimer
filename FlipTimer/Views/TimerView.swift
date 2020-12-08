@@ -1,7 +1,7 @@
 import SwiftUI
 import AVFoundation
 
-struct ContentView: View {
+struct TimerView: View {
     @State private var showSettingsView = false
 
     @StateObject var timerManager = TimerManager()
@@ -68,7 +68,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
+            TimerView()
         }
     }
 }
