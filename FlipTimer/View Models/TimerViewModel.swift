@@ -170,9 +170,7 @@ final class TimerViewModel: ObservableObject {
             guard error == nil else { return }
             guard let data = accelerometerData else { return }
 
-            let z = data.acceleration.z
-
-            if z > 0.9 && z < 1.1 {
+            if self.isUpsideDown(accelerometerData: data) {
                 if !self.deviceIsFlipped {
                     self.deviceIsFlipped = true
                 }
@@ -184,5 +182,10 @@ final class TimerViewModel: ObservableObject {
         }
 
         print("Started accelerometer monitoring")
+    }
+
+    private func isUpsideDown(accelerometerData: CMAccelerometerData) -> Bool {
+        let z = accelerometerData.acceleration.z
+        return z > 0.9 && z < 1.1
     }
 }
