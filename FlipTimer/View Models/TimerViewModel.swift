@@ -35,7 +35,7 @@ final class TimerViewModel: ObservableObject {
             .dropFirst()
             .removeDuplicates()
             .sink { (value) in
-                value ? self.deviceFlipped() : self.deviceUnflipped()
+                value ? self.start() : self.pause()
             }
             .store(in: &cancellable)
 
@@ -80,7 +80,7 @@ final class TimerViewModel: ObservableObject {
         UIDevice.current.isProximityMonitoringEnabled = false
     }
 
-    private func deviceFlipped() {
+    private func start() {
         print("Device flipped")
 
         // BeginRecording sound
@@ -98,7 +98,7 @@ final class TimerViewModel: ObservableObject {
         dimScreen()
     }
 
-    private func deviceUnflipped() {
+    private func pause() {
         print("Device unflipped")
 
         secondsElapsed += secondsSinceStartedAt
