@@ -16,7 +16,7 @@ struct TimerView: View {
                 
                 VStack {
                     if viewModel.timerMode == .initial {
-                        Text("Flip your phone to start the timer")
+                        Text("Flip your device to start the timer")
                             .foregroundColor(Color(UIColor.systemGray))
                     }
 
