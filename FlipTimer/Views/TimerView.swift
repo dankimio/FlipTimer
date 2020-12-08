@@ -2,9 +2,10 @@ import SwiftUI
 import AVFoundation
 
 struct TimerView: View {
-    @State private var showSettingsView = false
-
     @StateObject var viewModel = TimerViewModel()
+
+    @State private var showSettingsView = false
+    @State private var showTimerLengthPicker = false
     
     var body: some View {
         NavigationView {
@@ -13,6 +14,9 @@ struct TimerView: View {
                     .font(.system(size: 96, weight: .regular, design: .monospaced))
                     .padding(.bottom, 30)
                     .minimumScaleFactor(0.5)
+                    .onTapGesture {
+                        showTimerLengthPicker = true
+                    }
                 
                 VStack {
                     if viewModel.timerMode == .initial {
@@ -49,6 +53,19 @@ struct TimerView: View {
         }
         .sheet(isPresented: $showSettingsView, content: {
             SettingsView(showSettingsView: $showSettingsView)
+        })
+        .actionSheet(isPresented: $showTimerLengthPicker, content: {
+            ActionSheet(
+                title: Text("Timer length"),
+                message: Text("Choose timer length"),
+                buttons: [
+                    .default(Text("15 minutes")),
+                    .default(Text("25 minutes")),
+                    .default(Text("30 minutes")),
+                    .default(Text("45 minutes")),
+                    .cancel()
+                ]
+            )
         })
         .onAppear(perform: {
             print("onAppear")
