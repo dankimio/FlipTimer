@@ -5,7 +5,6 @@ struct TimerView: View {
     @StateObject var viewModel = TimerViewModel()
 
     @State private var showSettingsView = false
-    @State private var showTimerLengthPicker = false
     
     var body: some View {
         NavigationView {
@@ -17,7 +16,7 @@ struct TimerView: View {
                     .onTapGesture {
                         guard viewModel.timerMode == .initial else { return }
 
-                        showTimerLengthPicker = true
+                        viewModel.shouldOpenTimerLengthPicker = true
                     }
                 
                 VStack {
@@ -56,7 +55,7 @@ struct TimerView: View {
         .sheet(isPresented: $showSettingsView, content: {
             SettingsView(showSettingsView: $showSettingsView)
         })
-        .actionSheet(isPresented: $showTimerLengthPicker, content: {
+        .actionSheet(isPresented: $viewModel.shouldOpenTimerLengthPicker, content: {
             var buttons = TimerLength.allCases.map { length in
                 ActionSheet.Button.default(Text(length.name)) {
                     viewModel.timerLength = length

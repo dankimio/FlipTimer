@@ -6,6 +6,7 @@ import Combine
 final class TimerViewModel: ObservableObject {
     @AppStorage("timerLength") var timerLength: TimerLength = .min25
     @Published var timerMode: TimerMode = .initial
+    @Published var shouldOpenTimerLengthPicker = false
 
     // Timer
     @Published private var secondsElapsed = 0
@@ -21,6 +22,12 @@ final class TimerViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
 
     init() {
+        $timerMode.sink { (timerMode) in
+            if timerMode != .initial {
+                self.shouldOpenTimerLengthPicker = false
+            }
+        }.store(in: &cancellable)
+
         $deviceIsFlipped
             .dropFirst()
             .removeDuplicates()
