@@ -15,6 +15,8 @@ struct TimerView: View {
                     .padding(.bottom, 30)
                     .minimumScaleFactor(0.5)
                     .onTapGesture {
+                        guard viewModel.timerMode == .initial else { return }
+
                         showTimerLengthPicker = true
                     }
                 
