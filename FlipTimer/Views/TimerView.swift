@@ -53,12 +53,12 @@ struct TimerView: View {
         .onAppear(perform: {
             print("onAppear")
 
-            viewModel.activateProximitySensor()
+            viewModel.startMonitoring()
         })
         .onDisappear(perform: {
             print("onDisappear")
 
-            viewModel.deactivateProximitySensor()
+            viewModel.stopMonitoring()
         })
     }
 }

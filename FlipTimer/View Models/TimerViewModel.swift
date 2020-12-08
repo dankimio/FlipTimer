@@ -56,7 +56,7 @@ final class TimerViewModel: ObservableObject {
         return timerLength - secondsElapsed
     }
 
-    func activateProximitySensor() {
+    func startMonitoring() {
         print("activateProximitySensor")
 
         UIDevice.current.isProximityMonitoringEnabled = true
@@ -66,7 +66,7 @@ final class TimerViewModel: ObservableObject {
         }
     }
 
-    func deactivateProximitySensor() {
+    func stopMonitoring() {
         print("deactivateProximitySensor")
 
         UIDevice.current.isProximityMonitoringEnabled = false
