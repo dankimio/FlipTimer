@@ -31,11 +31,9 @@ struct TimerView: View {
                                     Text("Stop").foregroundColor(.white)
                                     Spacer()
                                 }
-                                .padding()
-                                .background(Color.accentColor)
-                                .cornerRadius(12)
                             }
                         )
+                        .buttonStyle(PrimaryButtonStyle())
                     }
                 }.padding(.horizontal)
 
