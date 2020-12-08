@@ -160,12 +160,10 @@ final class TimerViewModel: ObservableObject {
             guard error == nil else { return }
             guard let data = accelerometerData else { return }
 
-            let x = data.acceleration.x
-            let y = data.acceleration.y
             let z = data.acceleration.z
 
             if z > 0.9 && z < 1.1 {
-                print("z: \(x), y: \(y), z: \(z)")
+                print("z: \(z)")
                 if !self.deviceIsFlipped {
                     self.deviceIsFlipped = true
                 }
