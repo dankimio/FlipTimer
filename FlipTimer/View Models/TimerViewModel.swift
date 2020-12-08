@@ -35,14 +35,12 @@ final class TimerViewModel: ObservableObject {
             .dropFirst()
             .removeDuplicates()
             .sink { (value) in
-                print("KEEK: \(value)")
                 value ? self.deviceFlipped() : self.deviceUnflipped()
             }
             .store(in: &cancellable)
 
         NotificationCenter.default.publisher(for: UIDevice.proximityStateDidChangeNotification)
             .sink { (notification) in
-                print("KEK????")
                 guard let device = notification.object as? UIDevice else { return }
 
                 self.deviceIsFlipped = device.proximityState
@@ -163,7 +161,6 @@ final class TimerViewModel: ObservableObject {
             let z = data.acceleration.z
 
             if z > 0.9 && z < 1.1 {
-                print("z: \(z)")
                 if !self.deviceIsFlipped {
                     self.deviceIsFlipped = true
                 }
