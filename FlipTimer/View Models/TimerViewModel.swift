@@ -1,6 +1,7 @@
 import SwiftUI
 import CoreMotion
 import AVFoundation
+import Combine
 
 final class TimerViewModel: ObservableObject {
     @Published var timerMode: TimerMode = .initial
@@ -9,6 +10,8 @@ final class TimerViewModel: ObservableObject {
 
     private var startedAt: Date?
     @Published private var secondsElapsed = 0
+
+    @Published private var deviceIsFlipped = false
 
     var timeLeft: String {
         let minutesLeft = secondsUntilTimerEnds / 60
@@ -22,21 +25,31 @@ final class TimerViewModel: ObservableObject {
         return "\(formattedMinutes):\(formattedSeconds)"
     }
 
+    private var cancellable = Set<AnyCancellable>()
+
+    init() {
+        $deviceIsFlipped
+            .dropFirst()
+            .sink { (value) in
+                value ? self.deviceFlipped() : self.deviceUnflipped()
+            }
+            .store(in: &cancellable)
+
+        NotificationCenter.default.publisher(for: UIDevice.proximityStateDidChangeNotification)
+            .sink { (notification) in
+                guard let device = notification.object as? UIDevice else { return }
+
+                self.deviceIsFlipped = device.proximityState
+            }
+            .store(in: &cancellable)
+    }
+
     func stop() {
         withAnimation {
             timerMode = .initial
         }
         startedAt = nil
         secondsElapsed = 0
-    }
-
-    // Source: https://gist.github.com/skl/a093291abc0a90a640e50f78888456e7
-    @objc func proximityDidChange(notification: NSNotification) {
-        print("proximityDidChange")
-
-        guard let device = notification.object as? UIDevice else { return }
-
-        device.proximityState ? deviceFlipped() : deviceUnflipped()
     }
 
     private var secondsUntilTimerEnds: Int {
@@ -51,24 +64,12 @@ final class TimerViewModel: ObservableObject {
             startMotionManager()
             return
         }
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(proximityDidChange),
-            name: UIDevice.proximityStateDidChangeNotification,
-            object: UIDevice.current
-        )
     }
 
     func deactivateProximitySensor() {
         print("deactivateProximitySensor")
 
         UIDevice.current.isProximityMonitoringEnabled = false
-        NotificationCenter.default.removeObserver(
-            self,
-            name: UIDevice.proximityStateDidChangeNotification,
-            object: UIDevice.current
-        )
     }
 
     private func deviceFlipped() {
@@ -122,7 +123,9 @@ final class TimerViewModel: ObservableObject {
     }
 
     private var secondsSinceStartedAt: Int {
-        let timeIntervalSinceStartedAt = Date().timeIntervalSince(startedAt!)
+        guard let startedAt = startedAt else { return 0 }
+
+        let timeIntervalSinceStartedAt = Date().timeIntervalSince(startedAt)
         return Int(timeIntervalSinceStartedAt)
     }
 
