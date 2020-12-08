@@ -1,4 +1,4 @@
-enum TimerLength: Int {
+enum TimerLength: Int, CaseIterable {
     case min15 = 15
     case min25 = 25
     case min30 = 30
@@ -6,5 +6,9 @@ enum TimerLength: Int {
 
     var inSeconds: Int {
         rawValue * 60
+    }
+
+    var name: String {
+        return "\(rawValue) minutes"
     }
 }

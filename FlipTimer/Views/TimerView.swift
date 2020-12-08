@@ -57,16 +57,17 @@ struct TimerView: View {
             SettingsView(showSettingsView: $showSettingsView)
         })
         .actionSheet(isPresented: $showTimerLengthPicker, content: {
-            ActionSheet(
+            var buttons = TimerLength.allCases.map { length in
+                ActionSheet.Button.default(Text(length.name)) {
+                    viewModel.timerLength = length
+                }
+            }
+            buttons.append(.cancel())
+
+            return ActionSheet(
                 title: Text("Timer length"),
                 message: Text("Choose timer length"),
-                buttons: [
-                    .default(Text("15 minutes")),
-                    .default(Text("25 minutes")),
-                    .default(Text("30 minutes")),
-                    .default(Text("45 minutes")),
-                    .cancel()
-                ]
+                buttons: buttons
             )
         })
         .onAppear(perform: {
