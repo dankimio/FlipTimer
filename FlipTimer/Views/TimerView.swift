@@ -4,8 +4,6 @@ import AVFoundation
 struct TimerView: View {
     @StateObject var viewModel = TimerViewModel()
 
-    @State private var showSettingsView = false
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -47,13 +45,13 @@ struct TimerView: View {
             .padding()
             .navigationBarItems(
                 trailing: Button(
-                    action: { showSettingsView.toggle() },
+                    action: { viewModel.shouldPresentSettingsView = true },
                     label: { Image(systemName: "gearshape.fill").imageScale(.large) }
                 )
             )
         }
-        .sheet(isPresented: $showSettingsView, content: {
-            SettingsView(showSettingsView: $showSettingsView)
+        .sheet(isPresented: $viewModel.shouldPresentSettingsView, content: {
+            SettingsView(showSettingsView: $viewModel.shouldPresentSettingsView)
         })
         .actionSheet(isPresented: $viewModel.shouldOpenTimerLengthPicker, content: {
             var buttons = TimerLength.allCases.map { length in
