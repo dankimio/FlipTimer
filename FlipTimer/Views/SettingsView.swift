@@ -4,7 +4,7 @@ struct SettingsView: View {
     @Binding var showSettingsView: Bool
 
     let twitterURL = URL(string: "https://twitter.com/dankimio")!
-    let websiteURL = URL(string: "https://dankim.io")!
+    let websiteURL = URL(string: "https://fliptimer.dankim.io")!
     let feedbackURL = URL(string: "https://forms.gle/AhLV8vtPq4511zij6")!
 
     var body: some View {
@@ -20,14 +20,36 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("Help")) {
-                    Link("Share Feedback", destination: feedbackURL)
+                    Link(destination: feedbackURL, label: {
+                        HStack {
+                            Text("Leave Feedback")
+                            Spacer()
+                            Image(systemName: "arrow.up.forward")
+                                .imageScale(.small)
+                                .foregroundColor(.gray)
+                        }
+                    })
                 }
 
-                if false {
-                    Section(header: Text("Follow")) {
-                        Link("Follow on Twitter", destination: twitterURL)
-                        Link("Open Website", destination: twitterURL)
-                    }
+                Section(header: Text("About")) {
+                    Link(destination: websiteURL, label: {
+                        HStack {
+                            Text("Open Website")
+                            Spacer()
+                            Image(systemName: "arrow.up.forward")
+                                .imageScale(.small)
+                                .foregroundColor(.gray)
+                        }
+                    })
+                    Link(destination: twitterURL, label: {
+                        HStack {
+                            Text("Follow on Twitter")
+                            Spacer()
+                            Image(systemName: "arrow.up.forward")
+                                .imageScale(.small)
+                                .foregroundColor(.gray)
+                        }
+                    })
                 }
             }
             .listStyle(InsetGroupedListStyle())
