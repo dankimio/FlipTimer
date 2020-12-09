@@ -1,4 +1,5 @@
 enum TimerLength: Int, CaseIterable {
+    case min5 = 5
     case min15 = 15
     case min25 = 25
     case min30 = 30
