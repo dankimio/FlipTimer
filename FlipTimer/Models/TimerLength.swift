@@ -5,7 +5,11 @@ enum TimerLength: Int, CaseIterable {
     case min45 = 45
 
     var inSeconds: Int {
-        rawValue * 60
+        #if DEBUG
+            return rawValue
+        #else
+            return rawValue * 60
+        #endif
     }
 
     var name: String {
