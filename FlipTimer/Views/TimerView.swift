@@ -1,8 +1,7 @@
 import SwiftUI
-import AVFoundation
 
 struct TimerView: View {
-    @StateObject var viewModel = TimerViewModel()
+    @StateObject private var viewModel = TimerViewModel()
 
     var body: some View {
         NavigationView {

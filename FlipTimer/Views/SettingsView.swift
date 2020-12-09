@@ -3,6 +3,8 @@ import SwiftUI
 struct SettingsView: View {
     @Binding var showSettingsView: Bool
 
+    @StateObject private var viewModel = SettingsViewModel()
+
     let twitterURL = URL(string: "https://twitter.com/dankimio")!
     let websiteURL = URL(string: "https://fliptimer.dankim.io")!
     let feedbackURL = URL(string: "https://forms.gle/AhLV8vtPq4511zij6")!
@@ -10,13 +12,11 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                if false {
-                    Section(
-                        header: Text("Mode"),
-                        footer: Text("Timer will be reset if the phone is unflipped")
-                    ) {
-                        Toggle("Strict mode", isOn: .constant(true))
-                    }
+                Section(
+                    header: Text("Mode"),
+                    footer: Text("Timer will be reset if the phone is unflipped")
+                ) {
+                    Toggle("Strict Mode", isOn: $viewModel.strictMode)
                 }
 
                 Section(header: Text("Help")) {
