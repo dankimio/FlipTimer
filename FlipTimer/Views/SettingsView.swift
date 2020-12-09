@@ -34,7 +34,7 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .navigationBarItems(
                 trailing: Button(
-                    action: { showSettingsView.toggle() },
+                    action: { showSettingsView = false },
                     label: { Text("Done") }
                 )
             )

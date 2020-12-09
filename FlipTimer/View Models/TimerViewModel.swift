@@ -32,6 +32,7 @@ final class TimerViewModel: ObservableObject {
 
         $shouldPresentSettingsView
             .dropFirst()
+            .removeDuplicates()
             .sink { (shouldOpenSettingsView) in
                 shouldOpenSettingsView ? self.stopMonitoring() : self.startMonitoring()
             }
@@ -89,11 +90,11 @@ final class TimerViewModel: ObservableObject {
 
         proximityMonitoringAvailable = true
 
-        print("Activated proximity monitoring")
+        print("Enabled proximity monitoring")
     }
 
     func stopMonitoring() {
-        print("deactivateProximitySensor")
+        print("Disabled proximity monitoring")
 
         UIDevice.current.isProximityMonitoringEnabled = false
 

@@ -48,6 +48,7 @@ struct TimerView: View {
                     action: { viewModel.shouldPresentSettingsView = true },
                     label: { Image(systemName: "gearshape.fill").imageScale(.large) }
                 )
+                .disabled(viewModel.timerMode != .initial)
             )
         }
         .sheet(isPresented: $viewModel.shouldPresentSettingsView, content: {
