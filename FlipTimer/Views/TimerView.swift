@@ -15,7 +15,7 @@ struct TimerView: View {
 
                         viewModel.shouldOpenTimerLengthPicker = true
                     }
-                
+
                 VStack {
                     if viewModel.timerMode == .initial {
                         Text("Flip your device to start the timer")

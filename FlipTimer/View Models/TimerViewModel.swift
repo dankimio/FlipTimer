@@ -10,6 +10,7 @@ final class TimerViewModel: ObservableObject {
     @Published var shouldPresentSettingsView = false
 
     // Timer
+    @AppStorage("strictMode") private var strictMode: Bool = false
     @Published private var secondsElapsed = 0
     @Published private var deviceIsFlipped = false
     private var startedAt: Date?
@@ -125,12 +126,12 @@ final class TimerViewModel: ObservableObject {
         secondsElapsed += secondsSinceStartedAt
 
         guard secondsUntilTimerEnds > 0 else {
-            withAnimation {
-                timerMode = .initial
-            }
-            startedAt = nil
-            secondsElapsed = 0
+            stop()
+            return
+        }
 
+        if strictMode {
+            stop()
             return
         }
 

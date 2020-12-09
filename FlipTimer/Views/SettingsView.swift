@@ -14,7 +14,7 @@ struct SettingsView: View {
             List {
                 Section(
                     header: Text("Mode"),
-                    footer: Text("Timer will be reset if the phone is unflipped")
+                    footer: Text("Timer will be reset if the phone is unflipped.")
                 ) {
                     Toggle("Strict Mode", isOn: $viewModel.strictMode)
                 }
