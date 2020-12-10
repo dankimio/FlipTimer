@@ -26,7 +26,7 @@ struct SettingsView: View {
                             Spacer()
                             Image(systemName: "arrow.up.forward")
                                 .imageScale(.small)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.accentColor)
                         }
                     })
                 }
@@ -38,7 +38,7 @@ struct SettingsView: View {
                             Spacer()
                             Image(systemName: "arrow.up.forward")
                                 .imageScale(.small)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.accentColor)
                         }
                     })
                     Link(destination: twitterURL, label: {
@@ -47,7 +47,7 @@ struct SettingsView: View {
                             Spacer()
                             Image(systemName: "arrow.up.forward")
                                 .imageScale(.small)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.accentColor)
                         }
                     })
                 }
