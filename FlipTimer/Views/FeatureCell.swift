@@ -1,10 +1,3 @@
-//
-//  FeatureCell.swift
-//  FlipTimer
-//
-//  Created by Dan on 12/12/2020.
-//
-
 import SwiftUI
 
 struct FeatureCell: View {

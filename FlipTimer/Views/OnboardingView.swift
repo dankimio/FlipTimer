@@ -1,10 +1,3 @@
-//
-//  OnboardingView.swift
-//  FlipTimer
-//
-//  Created by Dan on 11/12/2020.
-//
-
 import SwiftUI
 
 struct OnboardingView: View {
