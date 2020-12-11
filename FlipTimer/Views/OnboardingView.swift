@@ -37,6 +37,7 @@ struct OnboardingView: View {
                     subtitle: "Etiam non pellentesque ligula. Aenean eleifend erat tincidunt."
                 )
             }
+            .padding()
 
             // TODO: find out if spacers can have weight
             Spacer()
