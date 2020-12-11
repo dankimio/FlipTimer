@@ -53,6 +53,9 @@ struct TimerView: View {
         .sheet(isPresented: $viewModel.shouldPresentSettingsView, content: {
             SettingsView(showSettingsView: $viewModel.shouldPresentSettingsView)
         })
+        .sheet(isPresented: .constant(true), content: {
+            OnboardingView()
+        })
         .actionSheet(isPresented: $viewModel.shouldOpenTimerLengthPicker, content: {
             var buttons = TimerLength.allCases.map { length in
                 ActionSheet.Button.default(Text(length.name)) {
