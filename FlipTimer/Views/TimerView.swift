@@ -53,9 +53,6 @@ struct TimerView: View {
         .sheet(isPresented: $viewModel.shouldPresentSettingsView, content: {
             SettingsView(showSettingsView: $viewModel.shouldPresentSettingsView)
         })
-        .sheet(isPresented: .constant(true), content: {
-            OnboardingView()
-        })
         .actionSheet(isPresented: $viewModel.shouldOpenTimerLengthPicker, content: {
             var buttons = TimerLength.allCases.map { length in
                 ActionSheet.Button.default(Text(length.name)) {
@@ -83,7 +80,7 @@ struct TimerView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             TimerView()

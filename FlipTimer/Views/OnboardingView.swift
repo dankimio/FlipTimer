@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @AppStorage("onboardingDismissed") private var onboardingDismissed = false
+
     var body: some View {
         VStack {
             Spacer()
@@ -36,18 +38,22 @@ struct OnboardingView: View {
             Spacer()
             Spacer()
 
-            Button(action: {}, label: {
-                HStack {
-                    Spacer()
-                    Text("Continue")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                    Spacer()
-                }
-                .padding()
-                .background(Color.blue)
-                .cornerRadius(12)
-            })
+            Button(
+                action: {
+                    onboardingDismissed = true
+                },
+                label: {
+                    HStack {
+                        Spacer()
+                        Text("Continue")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                        Spacer()
+                    }
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(12)
+                })
         }
         .padding()
     }
