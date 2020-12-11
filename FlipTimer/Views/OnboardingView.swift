@@ -12,7 +12,7 @@ struct OnboardingView: View {
         VStack {
             Spacer()
 
-            Text("Welcome to Flip Timer")
+            Text("Welcome to\nFlip Timer!")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
@@ -23,18 +23,18 @@ struct OnboardingView: View {
             VStack(spacing: 24) {
                 FeatureCell(
                     imageName: "text.badge.checkmark",
-                    title: "Title",
-                    subtitle: "Subtitle"
+                    title: "Feature 1",
+                    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                 )
                 FeatureCell(
                     imageName: "text.badge.checkmark",
-                    title: "Title",
-                    subtitle: "Subtitle"
+                    title: "Feature 2",
+                    subtitle: "Maecenas a posuere nunc. Morbi faucibus, massa eget vehicula."
                 )
                 FeatureCell(
                     imageName: "text.badge.checkmark",
-                    title: "Title",
-                    subtitle: "Subtitle"
+                    title: "Feature 3",
+                    subtitle: "Etiam non pellentesque ligula. Aenean eleifend erat tincidunt."
                 )
             }
 
