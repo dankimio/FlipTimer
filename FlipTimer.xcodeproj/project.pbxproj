@@ -10,6 +10,7 @@
 		370D194525800A00000FAA08 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370D194425800A00000FAA08 /* PrimaryButtonStyle.swift */; };
 		370D195225802FD0000FAA08 /* TimerLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370D195125802FD0000FAA08 /* TimerLength.swift */; };
 		3732B7D12584102A00F72F79 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3732B7D02584102A00F72F79 /* OnboardingView.swift */; };
+		3732B7D42584158C00F72F79 /* FeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3732B7D32584158C00F72F79 /* FeatureCell.swift */; };
 		374A674025791BAA00F56C72 /* FlipTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374A673F25791BAA00F56C72 /* FlipTimerApp.swift */; };
 		374A674225791BAA00F56C72 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374A674125791BAA00F56C72 /* TimerView.swift */; };
 		374A674425791BAB00F56C72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374A674325791BAB00F56C72 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		370D194425800A00000FAA08 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		370D195125802FD0000FAA08 /* TimerLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLength.swift; sourceTree = "<group>"; };
 		3732B7D02584102A00F72F79 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		3732B7D32584158C00F72F79 /* FeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCell.swift; sourceTree = "<group>"; };
 		374A673C25791BAA00F56C72 /* FlipTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		374A673F25791BAA00F56C72 /* FlipTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipTimerApp.swift; sourceTree = "<group>"; };
 		374A674125791BAA00F56C72 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 				3783EA58257991470058C69E /* SettingsView.swift */,
 				370D194425800A00000FAA08 /* PrimaryButtonStyle.swift */,
 				3732B7D02584102A00F72F79 /* OnboardingView.swift */,
+				3732B7D32584158C00F72F79 /* FeatureCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				37A33CBA257C19A2003F2B96 /* TimerMode.swift in Sources */,
 				374A674225791BAA00F56C72 /* TimerView.swift in Sources */,
 				374A674025791BAA00F56C72 /* FlipTimerApp.swift in Sources */,
+				3732B7D42584158C00F72F79 /* FeatureCell.swift in Sources */,
 				37C155702581353B000349BA /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
