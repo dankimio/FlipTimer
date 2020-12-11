@@ -21,9 +21,21 @@ struct OnboardingView: View {
             Spacer()
 
             VStack(spacing: 24) {
-                Text("1")
-                Text("2")
-                Text("3")
+                FeatureCell(
+                    imageName: "text.badge.checkmark",
+                    title: "Title",
+                    subtitle: "Subtitle"
+                )
+                FeatureCell(
+                    imageName: "text.badge.checkmark",
+                    title: "Title",
+                    subtitle: "Subtitle"
+                )
+                FeatureCell(
+                    imageName: "text.badge.checkmark",
+                    title: "Title",
+                    subtitle: "Subtitle"
+                )
             }
 
             // TODO: find out if spacers can have weight
