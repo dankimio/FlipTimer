@@ -13,14 +13,14 @@ struct FeatureCell: View {
     var subtitle: String
 
     var body: some View {
-        HStack(spacing: 24) {
+        HStack(alignment: .top, spacing: 24) {
             Image(systemName: imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 32)
                 .foregroundColor(.blue)
 
-            VStack(alignment: .leading, content: {
+            VStack(alignment: .leading, spacing: 4, content: {
                 Text(title)
                     .font(.subheadline)
                     .fontWeight(.semibold)
@@ -38,8 +38,8 @@ struct FeatureCell_Previews: PreviewProvider {
     static var previews: some View {
         FeatureCell(
             imageName: "text.badge.checkmark",
-            title: "Title",
-            subtitle: "Subtitle"
+            title: "Some Feature",
+            subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         )
     }
 }
