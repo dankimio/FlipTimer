@@ -17,19 +17,19 @@ struct OnboardingView: View {
 
             VStack(spacing: 24) {
                 FeatureCell(
-                    imageName: "text.badge.checkmark",
-                    title: "Feature 1",
-                    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    imageName: "hourglass",
+                    title: "Timer Interval",
+                    subtitle: "Tap on the timer label and choose your timer length."
                 )
                 FeatureCell(
-                    imageName: "text.badge.checkmark",
-                    title: "Feature 2",
-                    subtitle: "Maecenas a posuere nunc. Morbi faucibus, massa eget vehicula."
+                    imageName: "arrow.turn.right.down",
+                    title: "No Screen Time",
+                    subtitle: "Put your device on the table screen facing down to start the timer."
                 )
                 FeatureCell(
-                    imageName: "text.badge.checkmark",
-                    title: "Feature 3",
-                    subtitle: "Etiam non pellentesque ligula. Aenean eleifend erat tincidunt."
+                    imageName: "speaker.wave.2.fill",
+                    title: "Take a Break",
+                    subtitle: "You will hear a sound when the timer is finished. Take a break and restart when you're ready!"
                 )
             }
             .padding()
