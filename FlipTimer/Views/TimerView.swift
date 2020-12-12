@@ -80,7 +80,7 @@ struct TimerView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             TimerView()
