@@ -52,6 +52,7 @@ struct TimerView: View {
                             }
                         )
                         .buttonStyle(PrimaryButtonStyle())
+                        .frame(maxWidth: 300)
                     }
                 }.padding(.horizontal)
 
