@@ -125,6 +125,8 @@ final class TimerViewModel: ObservableObject {
 
         secondsElapsed += secondsSinceStartedAt
 
+        brightenScreen()
+
         guard secondsUntilTimerEnds > 0 else {
             stop()
             return
@@ -141,8 +143,6 @@ final class TimerViewModel: ObservableObject {
 
         // EndRecording sound
         AudioServicesPlayAlertSound(SystemSoundID(1118))
-
-        brightenScreen()
 
         print("secondsElapsed: \(secondsElapsed)")
     }
