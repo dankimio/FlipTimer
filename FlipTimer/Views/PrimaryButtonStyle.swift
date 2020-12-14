@@ -1,10 +1,3 @@
-//
-//  PrimaryButtonStyle.swift
-//  FlipTimer
-//
-//  Created by Dan on 08/12/2020.
-//
-
 import SwiftUI
 
 struct PrimaryButtonStyle: ButtonStyle {
