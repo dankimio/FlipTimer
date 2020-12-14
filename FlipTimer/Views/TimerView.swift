@@ -8,13 +8,29 @@ struct TimerView: View {
             VStack {
                 Text("\(viewModel.timeLeft)")
                     .font(.system(size: 96, weight: .regular, design: .monospaced))
-                    .padding(.bottom, 30)
                     .minimumScaleFactor(0.5)
                     .onTapGesture {
                         guard viewModel.timerMode == .initial else { return }
 
                         viewModel.shouldOpenTimerLengthPicker = true
                     }
+                    .actionSheet(isPresented: $viewModel.shouldOpenTimerLengthPicker, content: {
+                        var buttons = TimerLength.allCases.map { length in
+                            ActionSheet.Button.default(Text(length.name)) {
+                                viewModel.timerLength = length
+                            }
+                        }
+                        buttons.append(.cancel())
+
+                        return ActionSheet(
+                            title: Text("Timer length"),
+                            message: Text("Choose timer length"),
+                            buttons: buttons
+                        )
+                    })
+
+                Spacer()
+                    .frame(maxHeight: 30)
 
                 VStack {
                     if viewModel.timerMode == .initial {
@@ -50,22 +66,9 @@ struct TimerView: View {
                 .disabled(viewModel.timerMode != .initial)
             )
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $viewModel.shouldPresentSettingsView, content: {
             SettingsView(showSettingsView: $viewModel.shouldPresentSettingsView)
-        })
-        .actionSheet(isPresented: $viewModel.shouldOpenTimerLengthPicker, content: {
-            var buttons = TimerLength.allCases.map { length in
-                ActionSheet.Button.default(Text(length.name)) {
-                    viewModel.timerLength = length
-                }
-            }
-            buttons.append(.cancel())
-
-            return ActionSheet(
-                title: Text("Timer length"),
-                message: Text("Choose timer length"),
-                buttons: buttons
-            )
         })
         .onAppear(perform: {
             print("onAppear")
