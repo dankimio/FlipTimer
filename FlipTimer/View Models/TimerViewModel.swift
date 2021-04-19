@@ -23,6 +23,9 @@ final class TimerViewModel: ObservableObject {
     // Combine
     private var cancellable = Set<AnyCancellable>()
 
+    // Audio
+    private var audioPlayer: AVAudioPlayer?
+
     init() {
         $timerMode
             .sink { (timerMode) in
@@ -157,7 +160,8 @@ final class TimerViewModel: ObservableObject {
         }
 
         // Play the sound when the timer ends
-        AudioServicesPlayAlertSound(SystemSoundID(1025))
+        // AudioServicesPlayAlertSound(SystemSoundID(1025))
+        playSuccessSound()
     }
 
     private var secondsSinceStartedAt: Int {
@@ -209,5 +213,15 @@ final class TimerViewModel: ObservableObject {
     private func isUpsideDown(accelerometerData: CMAccelerometerData) -> Bool {
         let z = accelerometerData.acceleration.z
         return z > 0.9 && z < 1.1
+    }
+
+    private func playSuccessSound() {
+        try! AVAudioSession.sharedInstance().setCategory(.ambient)
+        try! AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+
+        let url = Bundle.main.url(forResource: "success", withExtension: "m4a")!
+
+        audioPlayer = try! AVAudioPlayer(contentsOf: url)
+        audioPlayer?.play()
     }
 }
