@@ -25,6 +25,7 @@ final class TimerViewModel: ObservableObject {
 
     // Audio
     private var audioPlayer: AVAudioPlayer?
+    private let audioPlayerDelegate = AudioPlayerDelegate()
 
     init() {
         $timerMode
@@ -215,13 +216,22 @@ final class TimerViewModel: ObservableObject {
         return z > 0.9 && z < 1.1
     }
 
+    // TODO: extract
     private func playSuccessSound() {
-        try! AVAudioSession.sharedInstance().setCategory(.ambient)
-        try! AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+        try! AVAudioSession.sharedInstance().setCategory(.ambient, options: .duckOthers)
+        try! AVAudioSession.sharedInstance().setActive(true)
 
         let url = Bundle.main.url(forResource: "success", withExtension: "m4a")!
 
         audioPlayer = try! AVAudioPlayer(contentsOf: url)
         audioPlayer?.play()
+        audioPlayer?.delegate = audioPlayerDelegate
+    }
+}
+
+// TODO: extract
+class AudioPlayerDelegate: NSObject, AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        try? AVAudioSession.sharedInstance().setActive(false)
     }
 }
