@@ -1,6 +1,6 @@
-#  FlipTimer
+#  Flip Timer
 
-FlipTimer is a productivity timer based on the phone's proximity sensor.
+Flip Timer is a productivity timer that uses your phone's proximity sensor to start and stop the timer.
 
 ## Screenshots
 
