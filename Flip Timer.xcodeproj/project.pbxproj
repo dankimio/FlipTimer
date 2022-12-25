@@ -28,7 +28,7 @@
 		370D195125802FD0000FAA08 /* TimerLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLength.swift; sourceTree = "<group>"; };
 		3732B7D02584102A00F72F79 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		3732B7D32584158C00F72F79 /* FeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCell.swift; sourceTree = "<group>"; };
-		374A673C25791BAA00F56C72 /* FlipTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		374A673C25791BAA00F56C72 /* Flip Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flip Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		374A673F25791BAA00F56C72 /* FlipTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipTimerApp.swift; sourceTree = "<group>"; };
 		374A674125791BAA00F56C72 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		374A674325791BAB00F56C72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		374A673D25791BAA00F56C72 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				374A673C25791BAA00F56C72 /* FlipTimer.app */,
+				374A673C25791BAA00F56C72 /* Flip Timer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,9 +136,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		374A673B25791BAA00F56C72 /* FlipTimer */ = {
+		374A673B25791BAA00F56C72 /* Flip Timer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 374A674B25791BAB00F56C72 /* Build configuration list for PBXNativeTarget "FlipTimer" */;
+			buildConfigurationList = 374A674B25791BAB00F56C72 /* Build configuration list for PBXNativeTarget "Flip Timer" */;
 			buildPhases = (
 				374A673825791BAA00F56C72 /* Sources */,
 				374A673925791BAA00F56C72 /* Frameworks */,
@@ -148,9 +148,9 @@
 			);
 			dependencies = (
 			);
-			name = FlipTimer;
+			name = "Flip Timer";
 			productName = FlipTimer;
-			productReference = 374A673C25791BAA00F56C72 /* FlipTimer.app */;
+			productReference = 374A673C25791BAA00F56C72 /* Flip Timer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -167,7 +167,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 374A673725791BAA00F56C72 /* Build configuration list for PBXProject "FlipTimer" */;
+			buildConfigurationList = 374A673725791BAA00F56C72 /* Build configuration list for PBXProject "Flip Timer" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -180,7 +180,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				374A673B25791BAA00F56C72 /* FlipTimer */,
+				374A673B25791BAA00F56C72 /* Flip Timer */,
 			);
 		};
 /* End PBXProject section */
@@ -387,7 +387,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		374A673725791BAA00F56C72 /* Build configuration list for PBXProject "FlipTimer" */ = {
+		374A673725791BAA00F56C72 /* Build configuration list for PBXProject "Flip Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				374A674925791BAB00F56C72 /* Debug */,
@@ -396,7 +396,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		374A674B25791BAB00F56C72 /* Build configuration list for PBXNativeTarget "FlipTimer" */ = {
+		374A674B25791BAB00F56C72 /* Build configuration list for PBXNativeTarget "Flip Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				374A674C25791BAB00F56C72 /* Debug */,
