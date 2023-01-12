@@ -7,7 +7,7 @@ struct TimerView: View {
         NavigationView {
             VStack {
                 Text("\(viewModel.timeLeft)")
-                    .font(.system(size: 96, weight: .regular, design: .monospaced))
+                    .font(.system(size: 96, weight: .medium, design: .monospaced))
                     .minimumScaleFactor(0.5)
                     .onTapGesture {
                         guard viewModel.timerMode == .initial else { return }
@@ -30,7 +30,7 @@ struct TimerView: View {
                     })
 
                 Spacer()
-                    .frame(maxHeight: 30)
+                    .frame(maxHeight: 24)
 
                 VStack {
                     if viewModel.timerMode == .initial {
