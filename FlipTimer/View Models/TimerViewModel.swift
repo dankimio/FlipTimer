@@ -173,16 +173,14 @@ final class TimerViewModel: ObservableObject {
         
         do {
             try device.lockForConfiguration()
-            
-            device.torchMode = .on
+            try device.setTorchModeOn(level: 0.1)
             
             device.unlockForConfiguration()
         } catch {
             print("torch u better work")
         }
         
-//        TODO: set torch level
-//        device.setTorchModeOn(level: 0.5)
+
         
 //        device.torchMode = .on
     }
