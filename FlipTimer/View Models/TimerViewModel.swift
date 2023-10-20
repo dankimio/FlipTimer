@@ -163,6 +163,28 @@ final class TimerViewModel: ObservableObject {
         // Play the sound when the timer ends
         // AudioServicesPlayAlertSound(SystemSoundID(1025))
         playSuccessSound()
+
+        
+        // code for torch ughhh xcode code editing and formatting sucks pls help
+//        TODO: extract to own method
+        guard let device = AVCaptureDevice.default(for: .video) else { return }
+        
+        guard device.hasTorch && device.isTorchAvailable else { return }
+        
+        do {
+            try device.lockForConfiguration()
+            
+            device.torchMode = .on
+            
+            device.unlockForConfiguration()
+        } catch {
+            print("torch u better work")
+        }
+        
+//        TODO: set torch level
+//        device.setTorchModeOn(level: 0.5)
+        
+//        device.torchMode = .on
     }
 
     private var secondsSinceStartedAt: Int {
