@@ -179,10 +179,6 @@ final class TimerViewModel: ObservableObject {
         } catch {
             print("torch u better work")
         }
-        
-
-        
-//        device.torchMode = .on
     }
 
     private var secondsSinceStartedAt: Int {
