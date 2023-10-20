@@ -202,6 +202,17 @@ final class TimerViewModel: ObservableObject {
             try device.setTorchModeOn(level: 0.1)
 
             device.unlockForConfiguration()
+
+            DispatchQueue.main.asyncAfter(deadline:.now() + 0.1 ) {
+                do {
+                    try device.lockForConfiguration()
+                    device.torchMode = .off
+                    device.unlockForConfiguration()
+                } catch { 
+                    //ugh
+                }
+
+            }
         } catch {
             print("torch u better work")
         }
