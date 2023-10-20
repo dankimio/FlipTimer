@@ -165,6 +165,9 @@ final class TimerViewModel: ObservableObject {
         playSuccessSound()
 
         flash()
+        DispatchQueue.main.asyncAfter(deadline:.now() + 0.2 ) {
+            self.flash()
+        }
     }
 
     private var secondsSinceStartedAt: Int {
