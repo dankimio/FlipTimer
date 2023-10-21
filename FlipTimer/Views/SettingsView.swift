@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 struct SettingsView: View {
     @Binding var showSettingsView: Bool
@@ -19,11 +20,13 @@ struct SettingsView: View {
                     Toggle("Strict Mode", isOn: $viewModel.strictMode)
                 }
 
-                Section(
-                    header: Text("Notification"),
-                    footer: Text("Flash when the time is up.")
-                ) {
-                    Toggle("Flash", isOn: $viewModel.flash)
+                if isTorchAvailable {
+                    Section(
+                        header: Text("Notification"),
+                        footer: Text("Flash when the time is up.")
+                    ) {
+                        Toggle("Flash", isOn: $viewModel.flash)
+                    }
                 }
 
                 Section(header: Text("Help")) {
@@ -68,6 +71,12 @@ struct SettingsView: View {
                 )
             )
         }
+    }
+
+    private var isTorchAvailable: Bool {
+        guard let device = AVCaptureDevice.default(for: .video) else { return false }
+
+        return device.hasTorch && device.isTorchAvailable
     }
 
     struct SettingsView_Previews: PreviewProvider {
