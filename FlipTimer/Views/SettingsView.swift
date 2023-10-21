@@ -20,7 +20,7 @@ struct SettingsView: View {
                     Toggle("Strict Mode", isOn: $viewModel.strictMode)
                 }
 
-                if hasTorch {
+                if Flashlight.shared.hasFlashlight {
                     Section(
                         header: Text("Notification"),
                         footer: Text("Flash when the time is up.")
@@ -71,12 +71,6 @@ struct SettingsView: View {
                 )
             )
         }
-    }
-
-    private var hasTorch: Bool {
-        guard let device = AVCaptureDevice.default(for: .video) else { return false }
-
-        return device.hasTorch
     }
 
     struct SettingsView_Previews: PreviewProvider {
