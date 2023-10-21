@@ -207,15 +207,19 @@ final class TimerViewModel: ObservableObject {
             device.unlockForConfiguration()
 
             DispatchQueue.main.asyncAfter(deadline:.now() + 0.1 ) {
-                do {
-                    try device.lockForConfiguration()
-                    device.torchMode = .off
-                    device.unlockForConfiguration()
-                } catch { 
-                    print("Failed to lock for configuration")
-                }
+                self.turnOffTorch(device)
 
             }
+        } catch {
+            print("Failed to lock for configuration")
+        }
+    }
+
+    private func turnOffTorch(_ device: AVCaptureDevice) {
+        do {
+            try device.lockForConfiguration()
+            device.torchMode = .off
+            device.unlockForConfiguration()
         } catch {
             print("Failed to lock for configuration")
         }
