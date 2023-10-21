@@ -212,12 +212,12 @@ final class TimerViewModel: ObservableObject {
                     device.torchMode = .off
                     device.unlockForConfiguration()
                 } catch { 
-                    //ugh
+                    print("Failed to lock for configuration")
                 }
 
             }
         } catch {
-            print("torch u better work")
+            print("Failed to lock for configuration")
         }
     }
 
