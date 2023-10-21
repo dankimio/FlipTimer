@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 struct SettingsView: View {
     @Binding var showSettingsView: Bool
@@ -17,6 +18,15 @@ struct SettingsView: View {
                     footer: Text("Timer will be reset if the phone is unflipped.")
                 ) {
                     Toggle("Strict Mode", isOn: $viewModel.strictMode)
+                }
+
+                if Flashlight.shared.hasFlashlight {
+                    Section(
+                        header: Text("Notification"),
+                        footer: Text("Flash when the time is up.")
+                    ) {
+                        Toggle("Flash", isOn: $viewModel.flash)
+                    }
                 }
 
                 Section(header: Text("Help")) {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		370D194525800A00000FAA08 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370D194425800A00000FAA08 /* PrimaryButtonStyle.swift */; };
 		370D195225802FD0000FAA08 /* TimerLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370D195125802FD0000FAA08 /* TimerLength.swift */; };
+		3721FDA02AE4571400E07692 /* Flashlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3721FD9F2AE4571400E07692 /* Flashlight.swift */; };
 		3732B7D12584102A00F72F79 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3732B7D02584102A00F72F79 /* OnboardingView.swift */; };
 		3732B7D42584158C00F72F79 /* FeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3732B7D32584158C00F72F79 /* FeatureCell.swift */; };
 		374A674025791BAA00F56C72 /* FlipTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374A673F25791BAA00F56C72 /* FlipTimerApp.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		370D194425800A00000FAA08 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		370D195125802FD0000FAA08 /* TimerLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLength.swift; sourceTree = "<group>"; };
+		3721FD9F2AE4571400E07692 /* Flashlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashlight.swift; sourceTree = "<group>"; };
 		3732B7D02584102A00F72F79 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		3732B7D32584158C00F72F79 /* FeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCell.swift; sourceTree = "<group>"; };
 		374A673C25791BAA00F56C72 /* Flip Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flip Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		3721FD9E2AE456F600E07692 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3721FD9F2AE4571400E07692 /* Flashlight.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		374A673325791BAA00F56C72 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 				37A33CB8257C1999003F2B96 /* Models */,
 				37BC0AB7257ABE4900238884 /* View Models */,
 				37088869257AB46A0037C671 /* Views */,
+				3721FD9E2AE456F600E07692 /* Utilities */,
 				374A673F25791BAA00F56C72 /* FlipTimerApp.swift */,
 				374A674325791BAB00F56C72 /* Assets.xcassets */,
 				374A674825791BAB00F56C72 /* Info.plist */,
@@ -205,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				370D194525800A00000FAA08 /* PrimaryButtonStyle.swift in Sources */,
+				3721FDA02AE4571400E07692 /* Flashlight.swift in Sources */,
 				37ACBD9F25842D0000AD7702 /* ContentView.swift in Sources */,
 				3783EA59257991470058C69E /* SettingsView.swift in Sources */,
 				370D195225802FD0000FAA08 /* TimerLength.swift in Sources */,
