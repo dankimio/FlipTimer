@@ -19,6 +19,13 @@ struct SettingsView: View {
                     Toggle("Strict Mode", isOn: $viewModel.strictMode)
                 }
 
+                Section(
+                    header: Text("Notification"),
+                    footer: Text("Flash when the time is up.")
+                ) {
+                    Toggle("Flash", isOn: $viewModel.flash)
+                }
+
                 Section(header: Text("Help")) {
                     Link(destination: feedbackURL, label: {
                         HStack {
