@@ -166,9 +166,9 @@ final class TimerViewModel: ObservableObject {
         playSuccessSound()
 
         if flashIsEnabled {
-            flash()
+            Flashlight.shared.flash()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                self.flash()
+                Flashlight.shared.flash()
             }
         }
     }
@@ -195,37 +195,6 @@ final class TimerViewModel: ObservableObject {
         }
 
         UIScreen.main.brightness = self.userBrightness!
-    }
-
-    // Enables torch for 0.1s
-    // TODO: extract to service?
-    private func flash() {
-        guard let device = AVCaptureDevice.default(for: .video) else { return }
-
-        guard device.hasTorch && device.isTorchAvailable else { return }
-
-        do {
-            try device.lockForConfiguration()
-            try device.setTorchModeOn(level: 0.1)
-
-            device.unlockForConfiguration()
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 ) {
-                self.turnOffTorch(device)
-            }
-        } catch {
-            print("Failed to lock for configuration")
-        }
-    }
-
-    private func turnOffTorch(_ device: AVCaptureDevice) {
-        do {
-            try device.lockForConfiguration()
-            device.torchMode = .off
-            device.unlockForConfiguration()
-        } catch {
-            print("Failed to lock for configuration")
-        }
     }
 
     func startMotionManager() {
