@@ -194,7 +194,8 @@ final class TimerViewModel: ObservableObject {
         UIScreen.main.brightness = self.userBrightness!
     }
 
-    // code for torch ughhh xcode code editing and formatting sucks pls help
+    // Enables torch for 0.1s
+    // TODO: extract to service?
     private func flash() {
         guard let device = AVCaptureDevice.default(for: .video) else { return }
 
