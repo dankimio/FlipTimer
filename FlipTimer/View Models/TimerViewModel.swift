@@ -11,6 +11,7 @@ final class TimerViewModel: ObservableObject {
 
     // Timer
     @AppStorage("strictMode") private var strictMode: Bool = false
+    @AppStorage("flash") private var flashIsEnabled: Bool = false
     @Published private var secondsElapsed = 0
     @Published private var deviceIsFlipped = false
     private var startedAt: Date?
@@ -164,9 +165,11 @@ final class TimerViewModel: ObservableObject {
         // AudioServicesPlayAlertSound(SystemSoundID(1025))
         playSuccessSound()
 
-        flash()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.flash()
+        if flashIsEnabled {
+            flash()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.flash()
+            }
         }
     }
 
