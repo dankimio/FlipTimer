@@ -6,6 +6,8 @@ struct SettingsView: View {
 
     @StateObject private var viewModel = SettingsViewModel()
 
+    @State private var selected = 1
+
     let twitterURL = URL(string: "https://twitter.com/dankimio")!
     let websiteURL = URL(string: "https://fliptimer.dan.kim")!
     let feedbackURL = URL(string: "https://forms.gle/AhLV8vtPq4511zij6")!
@@ -27,6 +29,19 @@ struct SettingsView: View {
                     ) {
                         Toggle("Flash", isOn: $viewModel.flash)
                     }
+                }
+
+                Section(header: Text("Icon")) {
+                    // EmptyView required to hide title
+                    // Source: https://stackoverflow.com/a/70762013/2505156
+                    Picker(
+                        selection: $selected, label: EmptyView()
+                    ) {
+                        Text("Red").tag(1)
+                        Image("Test").tag(2)
+                        Image("AppIcon").tag(3)
+                    }
+                    .pickerStyle(.inline)
                 }
 
                 Section(header: Text("Help")) {
@@ -72,10 +87,10 @@ struct SettingsView: View {
             )
         }
     }
+}
 
-    struct SettingsView_Previews: PreviewProvider {
-        static var previews: some View {
-            SettingsView(showSettingsView: .constant(true))
-        }
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingsView(showSettingsView: .constant(true))
     }
 }
