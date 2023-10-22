@@ -234,6 +234,9 @@ final class TimerViewModel: ObservableObject {
         audioPlayer = try! AVAudioPlayer(contentsOf: url)
         audioPlayer?.play()
         audioPlayer?.delegate = audioPlayerDelegate
+
+        // Source: https://stackoverflow.com/a/33693071/2505156
+        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
     }
 }
 
