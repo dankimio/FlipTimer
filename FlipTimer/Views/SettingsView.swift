@@ -42,7 +42,7 @@ struct SettingsView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .frame(width: 72, height: 72)
+                                .frame(width: 64, height: 64)
 
                             Text("Default")
                         }
@@ -53,7 +53,7 @@ struct SettingsView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .frame(width: 72, height: 72)
+                                .frame(width: 64, height: 64)
 
                             Text("Classic dark")
                         }
@@ -64,7 +64,7 @@ struct SettingsView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .frame(width: 72, height: 72)
+                                .frame(width: 64, height: 64)
 
                             Text("Classic light")
                         }
