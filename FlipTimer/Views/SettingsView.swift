@@ -38,8 +38,17 @@ struct SettingsView: View {
                         selection: $selected, label: EmptyView()
                     ) {
                         Text("Red").tag(1)
-                        Image("Test").tag(2)
                         Image("AppIcon").tag(3)
+                        HStack {
+                            Image("AppIcon2Image")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .frame(width: 72, height: 72)
+
+                            Text("Classic")
+                        }
+                        .tag(4)
                     }
                     .pickerStyle(.inline)
                 }
