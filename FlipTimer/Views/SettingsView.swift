@@ -37,18 +37,38 @@ struct SettingsView: View {
                     Picker(
                         selection: $selected, label: EmptyView()
                     ) {
-                        Text("Red").tag(1)
-                        Image("AppIcon").tag(3)
-                        HStack {
-                            Image("AppIcon2Image")
+                        HStack(spacing: 16) {
+                            Image("AppIconImage")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
                                 .frame(width: 72, height: 72)
 
-                            Text("Classic")
+                            Text("Default")
                         }
-                        .tag(4)
+                        .tag(0)
+                        
+                        HStack(spacing: 16) {
+                            Image("AppIconClassicDark")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .frame(width: 72, height: 72)
+
+                            Text("Classic dark")
+                        }
+                        .tag(1)
+                        
+                        HStack(spacing: 16) {
+                            Image("AppIconClassicLight")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .frame(width: 72, height: 72)
+
+                            Text("Classic light")
+                        }
+                        .tag(2)
                     }
                     .pickerStyle(.inline)
                 }
