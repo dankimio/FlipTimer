@@ -49,7 +49,7 @@ struct SettingsView: View {
                         .tag(0)
                         
                         HStack(spacing: 16) {
-                            Image("AppIconClassicDark")
+                            Image("AppIconClassicDarkImage")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -60,7 +60,7 @@ struct SettingsView: View {
                         .tag(1)
                         
                         HStack(spacing: 16) {
-                            Image("AppIconClassicLight")
+                            Image("AppIconClassicLightImage")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
