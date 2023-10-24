@@ -45,6 +45,7 @@
 		37BEE116257ADD3F00F1F787 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		37C1556F2581353B000349BA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		37EFB44E2AE83CDF007081DD /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		37EFB4502AE850F7007081DD /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				37BEE116257ADD3F00F1F787 /* README.md */,
+				37EFB4502AE850F7007081DD /* LICENSE */,
 				374A673E25791BAA00F56C72 /* FlipTimer */,
 				374A673D25791BAA00F56C72 /* Products */,
 			);
