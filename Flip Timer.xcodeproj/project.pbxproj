@@ -22,7 +22,7 @@
 		37ACBD9F25842D0000AD7702 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ACBD9E25842D0000AD7702 /* ContentView.swift */; };
 		37BC0AB9257ABE5900238884 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BC0AB8257ABE5900238884 /* TimerViewModel.swift */; };
 		37C155702581353B000349BA /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1556F2581353B000349BA /* SettingsViewModel.swift */; };
-		37EFB44F2AE83CDF007081DD /* IconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFB44E2AE83CDF007081DD /* IconManager.swift */; };
+		37EFB44F2AE83CDF007081DD /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFB44E2AE83CDF007081DD /* Icon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +44,7 @@
 		37BC0AB8257ABE5900238884 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		37BEE116257ADD3F00F1F787 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		37C1556F2581353B000349BA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		37EFB44E2AE83CDF007081DD /* IconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconManager.swift; sourceTree = "<group>"; };
+		37EFB44E2AE83CDF007081DD /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				3721FD9F2AE4571400E07692 /* Flashlight.swift */,
-				37EFB44E2AE83CDF007081DD /* IconManager.swift */,
+				37EFB44E2AE83CDF007081DD /* Icon.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -230,7 +230,7 @@
 				374A674025791BAA00F56C72 /* FlipTimerApp.swift in Sources */,
 				3732B7D42584158C00F72F79 /* FeatureCell.swift in Sources */,
 				37C155702581353B000349BA /* SettingsViewModel.swift in Sources */,
-				37EFB44F2AE83CDF007081DD /* IconManager.swift in Sources */,
+				37EFB44F2AE83CDF007081DD /* Icon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

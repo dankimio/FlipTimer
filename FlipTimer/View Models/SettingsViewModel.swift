@@ -23,6 +23,7 @@ final class SettingsViewModel: ObservableObject {
     }
 
     /// Change the app icon
+    /// Source: https://developer.apple.com/documentation/xcode/configuring_your_app_to_use_alternate_app_icons
     private func setAlternateAppIcon(icon: Icon) {
         // Set the icon name to nil to use the primary icon.
         let iconName: String? = (icon != .primary) ? icon.rawValue : nil
