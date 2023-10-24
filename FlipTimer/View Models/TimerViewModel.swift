@@ -25,8 +25,7 @@ final class TimerViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
 
     // Audio
-    private var audioPlayer: AVAudioPlayer?
-    private let audioPlayerDelegate = AudioPlayerDelegate()
+    private let soundManager = SoundManager.shared
 
     init() {
         $timerMode
@@ -163,7 +162,7 @@ final class TimerViewModel: ObservableObject {
 
         // Play the sound when the timer ends
         // AudioServicesPlayAlertSound(SystemSoundID(1025))
-        playSuccessSound()
+        soundManager.playSuccessSound()
 
         if flash {
             Flashlight.shared.flash()
@@ -224,25 +223,4 @@ final class TimerViewModel: ObservableObject {
         return z > 0.9 && z < 1.1
     }
 
-    // TODO: extract
-    private func playSuccessSound() {
-        try! AVAudioSession.sharedInstance().setCategory(.ambient, options: .duckOthers)
-        try! AVAudioSession.sharedInstance().setActive(true)
-
-        let url = Bundle.main.url(forResource: "success", withExtension: "m4a")!
-
-        audioPlayer = try! AVAudioPlayer(contentsOf: url)
-        audioPlayer?.play()
-        audioPlayer?.delegate = audioPlayerDelegate
-
-        // Source: https://stackoverflow.com/a/33693071/2505156
-        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-    }
-}
-
-// TODO: extract
-class AudioPlayerDelegate: NSObject, AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        try? AVAudioSession.sharedInstance().setActive(false)
-    }
 }
