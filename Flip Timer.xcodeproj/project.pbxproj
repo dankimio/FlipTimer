@@ -23,6 +23,7 @@
 		37BC0AB9257ABE5900238884 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BC0AB8257ABE5900238884 /* TimerViewModel.swift */; };
 		37C155702581353B000349BA /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1556F2581353B000349BA /* SettingsViewModel.swift */; };
 		37EFB44F2AE83CDF007081DD /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFB44E2AE83CDF007081DD /* Icon.swift */; };
+		37EFB4522AE8523C007081DD /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFB4512AE8523C007081DD /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		37C1556F2581353B000349BA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		37EFB44E2AE83CDF007081DD /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		37EFB4502AE850F7007081DD /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		37EFB4512AE8523C007081DD /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				3721FD9F2AE4571400E07692 /* Flashlight.swift */,
 				37EFB44E2AE83CDF007081DD /* Icon.swift */,
+				37EFB4512AE8523C007081DD /* SoundManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				37ACBD9F25842D0000AD7702 /* ContentView.swift in Sources */,
 				3783EA59257991470058C69E /* SettingsView.swift in Sources */,
 				370D195225802FD0000FAA08 /* TimerLength.swift in Sources */,
+				37EFB4522AE8523C007081DD /* SoundManager.swift in Sources */,
 				3732B7D12584102A00F72F79 /* OnboardingView.swift in Sources */,
 				37BC0AB9257ABE5900238884 /* TimerViewModel.swift in Sources */,
 				37A33CBA257C19A2003F2B96 /* TimerMode.swift in Sources */,
