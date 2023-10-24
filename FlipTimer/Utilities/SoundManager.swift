@@ -5,6 +5,16 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
 
     private var audioPlayer: AVAudioPlayer?
 
+    func playStartSound() {
+        // BeginRecording sound
+        AudioServicesPlayAlertSound(SystemSoundID(1117))
+    }
+
+    func playPauseSound() {
+        // EndRecording sound
+        AudioServicesPlayAlertSound(SystemSoundID(1118))
+    }
+
     func playSuccessSound() {
         try! AVAudioSession.sharedInstance().setCategory(.ambient, options: .duckOthers)
         try! AVAudioSession.sharedInstance().setActive(true)

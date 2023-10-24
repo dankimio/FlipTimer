@@ -109,8 +109,7 @@ final class TimerViewModel: ObservableObject {
     private func start() {
         print("Device flipped")
 
-        // BeginRecording sound
-        AudioServicesPlayAlertSound(SystemSoundID(1117))
+        soundManager.playStartSound()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(secondsUntilTimerEnds)) {
             self.tryToFinish()
@@ -145,8 +144,7 @@ final class TimerViewModel: ObservableObject {
             timerMode = .paused
         }
 
-        // EndRecording sound
-        AudioServicesPlayAlertSound(SystemSoundID(1118))
+        soundManager.playPauseSound()
 
         print("secondsElapsed: \(secondsElapsed)")
     }
@@ -160,8 +158,6 @@ final class TimerViewModel: ObservableObject {
             return
         }
 
-        // Play the sound when the timer ends
-        // AudioServicesPlayAlertSound(SystemSoundID(1025))
         soundManager.playSuccessSound()
 
         if flash {
