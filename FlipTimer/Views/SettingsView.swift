@@ -6,7 +6,7 @@ struct SettingsView: View {
 
     @StateObject private var viewModel = SettingsViewModel()
 
-    @State private var selected = 1
+    @State private var selected = 0
 
     let twitterURL = URL(string: "https://twitter.com/dankimio")!
     let websiteURL = URL(string: "https://fliptimer.dan.kim")!
