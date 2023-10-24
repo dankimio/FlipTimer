@@ -29,6 +29,26 @@ struct SettingsView: View {
                     }
                 }
 
+                Section(header: Text("Icon")) {
+                    // EmptyView required to hide title
+                    // Source: https://stackoverflow.com/a/70762013/2505156
+                    Picker(selection: $viewModel.icon, label: EmptyView()) {
+                        ForEach(Icon.allCases) { icon in
+                            HStack(spacing: 16) {
+                                Image(icon.imageName)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .frame(width: 60, height: 60)
+
+                                Text(icon.displayName)
+                            }
+                            .tag(icon)
+                        }
+                    }
+                    .pickerStyle(.inline)
+                }
+
                 Section(header: Text("Help")) {
                     Link(destination: feedbackURL, label: {
                         HStack {
@@ -72,10 +92,10 @@ struct SettingsView: View {
             )
         }
     }
+}
 
-    struct SettingsView_Previews: PreviewProvider {
-        static var previews: some View {
-            SettingsView(showSettingsView: .constant(true))
-        }
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingsView(showSettingsView: .constant(true))
     }
 }
