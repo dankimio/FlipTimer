@@ -39,7 +39,7 @@ struct SettingsView: View {
                     ) {
                         ForEach(Icon.allCases) { icon in
                             HStack(spacing: 16) {
-                                Image("\(icon.rawValue)Image")
+                                Image(icon.imageName)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .clipShape(RoundedRectangle(cornerRadius: 8))
