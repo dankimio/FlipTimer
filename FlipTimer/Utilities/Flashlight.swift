@@ -31,7 +31,7 @@ struct Flashlight {
 
     private func turnOffTorch() {
         guard let device = device else { return }
-        
+
         do {
             try device.lockForConfiguration()
             device.torchMode = .off
