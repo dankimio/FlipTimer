@@ -6,7 +6,7 @@ struct SettingsView: View {
 
     @StateObject private var viewModel = SettingsViewModel()
 
-    @State private var selected = 0
+    @State private var selected: Icon = .primary
 
     let twitterURL = URL(string: "https://twitter.com/dankimio")!
     let websiteURL = URL(string: "https://fliptimer.dan.kim")!
@@ -37,38 +37,17 @@ struct SettingsView: View {
                     Picker(
                         selection: $selected, label: EmptyView()
                     ) {
-                        HStack(spacing: 16) {
-                            Image("AppIconImage")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .frame(width: 60, height: 60)
+                        ForEach(Icon.allCases) { icon in
+                            HStack(spacing: 16) {
+                                Image("\(icon.rawValue)Image")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    .frame(width: 60, height: 60)
 
-                            Text("Default")
+                                Text(icon.displayName)
+                            }.tag(icon)
                         }
-                        .tag(0)
-                        
-                        HStack(spacing: 16) {
-                            Image("AppIconClassicDarkImage")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .frame(width: 60, height: 60)
-
-                            Text("Classic dark")
-                        }
-                        .tag(1)
-                        
-                        HStack(spacing: 16) {
-                            Image("AppIconClassicLightImage")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .frame(width: 60, height: 60)
-
-                            Text("Classic light")
-                        }
-                        .tag(2)
                     }
                     .pickerStyle(.inline)
                 }
