@@ -10,6 +10,18 @@ enum Icon: String, CaseIterable, Identifiable {
     var id: String {
         self.rawValue
     }
+
+    var displayName: String {
+        switch self {
+        case .primary: 
+            "Primary"
+        case .classicDark:
+            "Classic dark"
+        case .classicLight:
+            "Classic light"
+        }
+    }
+
 }
 
 // Source: https://developer.apple.com/documentation/xcode/configuring_your_app_to_use_alternate_app_icons
