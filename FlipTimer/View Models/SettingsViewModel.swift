@@ -17,6 +17,8 @@ final class SettingsViewModel: ObservableObject {
 
         $icon
             .sink { (icon) in
+                guard self.icon != icon else { return }
+
                 self.setAlternateAppIcon(icon: icon)
             }
             .store(in: &cancellable)
@@ -36,7 +38,5 @@ final class SettingsViewModel: ObservableObject {
                 print("Failed request to update the app’s icon: \(error)")
             }
         }
-
-        self.icon = icon
     }
 }
