@@ -12,7 +12,7 @@ enum Icon: String, CaseIterable, Identifiable {
 
     var displayName: String {
         switch self {
-        case .primary: 
+        case .primary:
             "Primary"
         case .classicDark:
             "Classic dark"
