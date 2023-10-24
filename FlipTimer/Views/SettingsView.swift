@@ -38,7 +38,7 @@ struct SettingsView: View {
                                 Image(icon.imageName)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .frame(width: 60, height: 60)
 
                                 Text(icon.displayName)
