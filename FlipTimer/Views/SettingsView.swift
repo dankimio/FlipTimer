@@ -6,8 +6,6 @@ struct SettingsView: View {
 
     @StateObject private var viewModel = SettingsViewModel()
 
-    @State private var selected: Icon = .primary
-
     let twitterURL = URL(string: "https://twitter.com/dankimio")!
     let websiteURL = URL(string: "https://fliptimer.dan.kim")!
     let feedbackURL = URL(string: "https://forms.gle/AhLV8vtPq4511zij6")!
@@ -34,9 +32,7 @@ struct SettingsView: View {
                 Section(header: Text("Icon")) {
                     // EmptyView required to hide title
                     // Source: https://stackoverflow.com/a/70762013/2505156
-                    Picker(
-                        selection: $selected, label: EmptyView()
-                    ) {
+                    Picker(selection: $viewModel.icon, label: EmptyView()) {
                         ForEach(Icon.allCases) { icon in
                             HStack(spacing: 16) {
                                 Image(icon.imageName)
@@ -46,7 +42,8 @@ struct SettingsView: View {
                                     .frame(width: 60, height: 60)
 
                                 Text(icon.displayName)
-                            }.tag(icon)
+                            }
+                            .tag(icon)
                         }
                     }
                     .pickerStyle(.inline)
