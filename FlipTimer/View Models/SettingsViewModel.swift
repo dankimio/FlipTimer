@@ -17,7 +17,7 @@ final class SettingsViewModel: ObservableObject {
 
         $icon
             .sink { (icon) in
-                print(444)
+                self.setAlternateAppIcon(icon: icon)
             }
             .store(in: &cancellable)
     }
