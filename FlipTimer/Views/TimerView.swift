@@ -39,6 +39,7 @@ struct TimerView: View {
                     if viewModel.timerMode == .initial {
                         Text("Flip your device to start the timer")
                             .foregroundColor(Color(UIColor.systemGray))
+                            .fontDesign(.rounded)
                     }
 
                     if viewModel.timerMode == .paused {
@@ -57,7 +58,8 @@ struct TimerView: View {
                         .buttonStyle(PrimaryButtonStyle())
                         .frame(maxWidth: 300)
                     }
-                }.padding(.horizontal)
+                }
+                .padding(.horizontal)
 
                 Spacer().frame(maxHeight: 200)
             }
