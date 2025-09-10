@@ -12,6 +12,8 @@ struct TimerView: View {
                     .fontWeight(.bold)
                     .monospacedDigit()
                     .minimumScaleFactor(0.5)
+                    .contentTransition(.numericText())
+                    .animation(.easeInOut, value: viewModel.timeLeft)
                     .onTapGesture {
                         guard viewModel.timerMode == .initial else { return }
 
